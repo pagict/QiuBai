@@ -1,0 +1,370 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B1F88BC41CAA6F0200093910 /* QiuBaiUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F88BC31CAA6F0200093910 /* QiuBaiUser.m */; };
+		B1F88BC81CAA78A800093910 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F88BC71CAA78A800093910 /* DataLoader.m */; };
+		B1F88BCA1CAA807E00093910 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = B1F88BC91CAA807E00093910 /* users.json */; };
+		B1F88BCD1CAAABE800093910 /* posts.json in Resources */ = {isa = PBXBuildFile; fileRef = B1F88BCB1CAAABE800093910 /* posts.json */; };
+		B1F88BCE1CAAABE800093910 /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = B1F88BCC1CAAABE800093910 /* comments.json */; };
+		F30D6685643820C49D21E1B0 /* ModelStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D61876B796EDF2F4A2974 /* ModelStore.m */; };
+		F30D674DEFC71FE35EBA6690 /* QiuEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D6E616BD80B8DD96A8747 /* QiuEventViewController.m */; };
+		F30D6949FAC5BF583679123E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D690D5F320F58AB65CF5B /* main.m */; };
+		F30D6A1F38579DC782510C95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F30D6AB6D965E33F97C9408E /* LaunchScreen.storyboard */; };
+		F30D6B2D1147BB43629A0D6E /* QiuBaiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D68593168D94AE67C17E0 /* QiuBaiAppDelegate.m */; };
+		F30D6B724A163030D7D05619 /* QiuBaiComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D65CDF8C575E835AB71DC /* QiuBaiComment.m */; };
+		F30D6CC7A9884720B4A592DE /* QiuBaiPost.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D64B841211A2C0DD0B202 /* QiuBaiPost.m */; };
+		F30D6D4289DBBC8332B8B988 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F30D6868BC3243BB9566DF36 /* Main.storyboard */; };
+		F30D6D88A81BC6DFC5FC2F68 /* QiuCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D62F8908EC0850740F5A0 /* QiuCircleViewController.m */; };
+		F30D6EF119BD6FD47F45A47B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F30D61F22149C8F62A24B842 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B1F88BC21CAA6F0200093910 /* QiuBaiUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiUser.h; path = models/QiuBaiUser.h; sourceTree = "<group>"; };
+		B1F88BC31CAA6F0200093910 /* QiuBaiUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiUser.m; path = models/QiuBaiUser.m; sourceTree = "<group>"; };
+		B1F88BC61CAA78A800093910 /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataLoader.h; path = models/backend/DataLoader.h; sourceTree = "<group>"; };
+		B1F88BC71CAA78A800093910 /* DataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataLoader.m; path = models/backend/DataLoader.m; sourceTree = "<group>"; };
+		B1F88BC91CAA807E00093910 /* users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = users.json; path = QiuBai/models/backend/users.json; sourceTree = "<group>"; };
+		B1F88BCB1CAAABE800093910 /* posts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = posts.json; path = QiuBai/models/backend/posts.json; sourceTree = "<group>"; };
+		B1F88BCC1CAAABE800093910 /* comments.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = comments.json; path = QiuBai/models/backend/comments.json; sourceTree = "<group>"; };
+		F30D615FA2113E2B0F828390 /* QiuBaiComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuBaiComment.h; sourceTree = "<group>"; };
+		F30D61876B796EDF2F4A2974 /* ModelStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelStore.m; sourceTree = "<group>"; };
+		F30D61F22149C8F62A24B842 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F30D62F8908EC0850740F5A0 /* QiuCircleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuCircleViewController.m; sourceTree = "<group>"; };
+		F30D64B841211A2C0DD0B202 /* QiuBaiPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuBaiPost.m; sourceTree = "<group>"; };
+		F30D6539E59F26D8F9A31EA9 /* QiuEventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuEventViewController.h; sourceTree = "<group>"; };
+		F30D65CDF8C575E835AB71DC /* QiuBaiComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuBaiComment.m; sourceTree = "<group>"; };
+		F30D6723FBF2B6D040316ACE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F30D68593168D94AE67C17E0 /* QiuBaiAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuBaiAppDelegate.m; sourceTree = "<group>"; };
+		F30D68A9D976174289B81DC8 /* QiuBaiAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuBaiAppDelegate.h; sourceTree = "<group>"; };
+		F30D690D5F320F58AB65CF5B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F30D695EAB881877C286354D /* QiuCircleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuCircleViewController.h; sourceTree = "<group>"; };
+		F30D6A78503E22BBAA5B6B71 /* QiuBaiPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuBaiPost.h; sourceTree = "<group>"; };
+		F30D6B652F06976E813BE656 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		F30D6D25584E4BF96E49BF4C /* ModelStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelStore.h; sourceTree = "<group>"; };
+		F30D6D681C6728053706E806 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F30D6DC859FA0491E27BEA90 /* QiuBai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiuBai.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F30D6E616BD80B8DD96A8747 /* QiuEventViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuEventViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F30D63772AEEB5261B3F7039 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B1F88BC11CAA6EDC00093910 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				B1F88BC51CAA789200093910 /* backend */,
+				B1F88BC21CAA6F0200093910 /* QiuBaiUser.h */,
+				B1F88BC31CAA6F0200093910 /* QiuBaiUser.m */,
+				F30D64B841211A2C0DD0B202 /* QiuBaiPost.m */,
+				F30D6A78503E22BBAA5B6B71 /* QiuBaiPost.h */,
+				F30D65CDF8C575E835AB71DC /* QiuBaiComment.m */,
+				F30D615FA2113E2B0F828390 /* QiuBaiComment.h */,
+				F30D61876B796EDF2F4A2974 /* ModelStore.m */,
+				F30D6D25584E4BF96E49BF4C /* ModelStore.h */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		B1F88BC51CAA789200093910 /* backend */ = {
+			isa = PBXGroup;
+			children = (
+				B1F88BC61CAA78A800093910 /* DataLoader.h */,
+				B1F88BC71CAA78A800093910 /* DataLoader.m */,
+			);
+			name = backend;
+			sourceTree = "<group>";
+		};
+		F30D623DDD28213147A8C60A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F30D6DC859FA0491E27BEA90 /* QiuBai.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F30D636680C1C682FA696603 = {
+			isa = PBXGroup;
+			children = (
+				B1F88BCB1CAAABE800093910 /* posts.json */,
+				B1F88BCC1CAAABE800093910 /* comments.json */,
+				B1F88BC91CAA807E00093910 /* users.json */,
+				F30D623DDD28213147A8C60A /* Products */,
+				F30D6F211E72B0CC4D25184A /* QiuBai */,
+			);
+			sourceTree = "<group>";
+		};
+		F30D69A8DB6E39322256ED67 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F30D690D5F320F58AB65CF5B /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F30D6F211E72B0CC4D25184A /* QiuBai */ = {
+			isa = PBXGroup;
+			children = (
+				B1F88BC11CAA6EDC00093910 /* models */,
+				F30D6B652F06976E813BE656 /* Info.plist */,
+				F30D61F22149C8F62A24B842 /* Assets.xcassets */,
+				F30D6AB6D965E33F97C9408E /* LaunchScreen.storyboard */,
+				F30D69A8DB6E39322256ED67 /* Supporting Files */,
+				F30D68A9D976174289B81DC8 /* QiuBaiAppDelegate.h */,
+				F30D68593168D94AE67C17E0 /* QiuBaiAppDelegate.m */,
+				F30D6868BC3243BB9566DF36 /* Main.storyboard */,
+				F30D6539E59F26D8F9A31EA9 /* QiuEventViewController.h */,
+				F30D6E616BD80B8DD96A8747 /* QiuEventViewController.m */,
+				F30D695EAB881877C286354D /* QiuCircleViewController.h */,
+				F30D62F8908EC0850740F5A0 /* QiuCircleViewController.m */,
+			);
+			path = QiuBai;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F30D66E7AC912BECB4D5AF3C /* QiuBai */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F30D6316B5A4017DC482B00F /* Build configuration list for PBXNativeTarget "QiuBai" */;
+			buildPhases = (
+				F30D6A8F509A319B3B2EC3BE /* Sources */,
+				F30D63772AEEB5261B3F7039 /* Frameworks */,
+				F30D69789F778AB8343A7943 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QiuBai;
+			productName = QiuBai;
+			productReference = F30D6DC859FA0491E27BEA90 /* QiuBai.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F30D69A42B2A21901903B478 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "pi-lot.org";
+			};
+			buildConfigurationList = F30D6467F51852E6EF45A164 /* Build configuration list for PBXProject "QiuBai" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F30D636680C1C682FA696603;
+			productRefGroup = F30D623DDD28213147A8C60A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F30D66E7AC912BECB4D5AF3C /* QiuBai */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F30D69789F778AB8343A7943 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1F88BCD1CAAABE800093910 /* posts.json in Resources */,
+				B1F88BCE1CAAABE800093910 /* comments.json in Resources */,
+				B1F88BCA1CAA807E00093910 /* users.json in Resources */,
+				F30D6EF119BD6FD47F45A47B /* Assets.xcassets in Resources */,
+				F30D6A1F38579DC782510C95 /* LaunchScreen.storyboard in Resources */,
+				F30D6D4289DBBC8332B8B988 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F30D6A8F509A319B3B2EC3BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F30D6949FAC5BF583679123E /* main.m in Sources */,
+				F30D6B2D1147BB43629A0D6E /* QiuBaiAppDelegate.m in Sources */,
+				B1F88BC81CAA78A800093910 /* DataLoader.m in Sources */,
+				F30D674DEFC71FE35EBA6690 /* QiuEventViewController.m in Sources */,
+				B1F88BC41CAA6F0200093910 /* QiuBaiUser.m in Sources */,
+				F30D6D88A81BC6DFC5FC2F68 /* QiuCircleViewController.m in Sources */,
+				F30D6CC7A9884720B4A592DE /* QiuBaiPost.m in Sources */,
+				F30D6B724A163030D7D05619 /* QiuBaiComment.m in Sources */,
+				F30D6685643820C49D21E1B0 /* ModelStore.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F30D6868BC3243BB9566DF36 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F30D6D681C6728053706E806 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F30D6AB6D965E33F97C9408E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F30D6723FBF2B6D040316ACE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F30D636E3717540D4CAD2EEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F30D63CDCFA8FB448CB90FDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = QiuBai/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = premium.QiuBai;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F30D65675CF403558AB19082 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = QiuBai/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = premium.QiuBai;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F30D6A296DE4F7D4F5F94FEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F30D6316B5A4017DC482B00F /* Build configuration list for PBXNativeTarget "QiuBai" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F30D63CDCFA8FB448CB90FDD /* Debug */,
+				F30D65675CF403558AB19082 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F30D6467F51852E6EF45A164 /* Build configuration list for PBXProject "QiuBai" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F30D636E3717540D4CAD2EEC /* Debug */,
+				F30D6A296DE4F7D4F5F94FEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F30D69A42B2A21901903B478 /* Project object */;
+}

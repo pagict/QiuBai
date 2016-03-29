@@ -1,0 +1,10 @@
+[
+	{
+		"postID"		:  7,
+		"postCotent"	: "One day one thing",
+		"likeCount"		: 1,
+		"dislikeCount"	: 0,
+		"postDate"		: "2015-1-30 18:22:07",
+		"comments"		: [1,3],
+	}
+]

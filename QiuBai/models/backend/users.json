@@ -1,0 +1,23 @@
+[
+	{
+		"userID"			: 1,
+		"nickName"			: "小李",
+		"marriageStatus"	: 1,
+		"stellar"			: 3,
+		"occupation"		: "Errhhh",
+		"profileImagePath"	: "https://www.google.com",
+		"joinedGroups"		: [1, 2, 3, 4],
+		"joinDate"			: "2011-3-5 9:38:42"
+	},
+	
+	{
+		"userID"			: 3,
+		"nickName"			: "李",
+		"marriageStatus"	: 2,
+		"stellar"			: 3,
+		"occupation"		: "Writer",
+		"profileImagePath"	: "https://www.google.com",
+		"joinedGroups"		: [1, 2, 3],
+		"joinDate"			: "2010-3-5 9:38:42"
+	}
+]
