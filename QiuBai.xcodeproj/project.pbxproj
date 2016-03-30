@@ -15,11 +15,9 @@
 		F30D6685643820C49D21E1B0 /* ModelStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D61876B796EDF2F4A2974 /* ModelStore.m */; };
 		F30D674DEFC71FE35EBA6690 /* QiuEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D6E616BD80B8DD96A8747 /* QiuEventViewController.m */; };
 		F30D6949FAC5BF583679123E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D690D5F320F58AB65CF5B /* main.m */; };
-		F30D6A1F38579DC782510C95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F30D6AB6D965E33F97C9408E /* LaunchScreen.storyboard */; };
 		F30D6B2D1147BB43629A0D6E /* QiuBaiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D68593168D94AE67C17E0 /* QiuBaiAppDelegate.m */; };
 		F30D6B724A163030D7D05619 /* QiuBaiComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D65CDF8C575E835AB71DC /* QiuBaiComment.m */; };
 		F30D6CC7A9884720B4A592DE /* QiuBaiPost.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D64B841211A2C0DD0B202 /* QiuBaiPost.m */; };
-		F30D6D4289DBBC8332B8B988 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F30D6868BC3243BB9566DF36 /* Main.storyboard */; };
 		F30D6D88A81BC6DFC5FC2F68 /* QiuCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D62F8908EC0850740F5A0 /* QiuCircleViewController.m */; };
 		F30D6EF119BD6FD47F45A47B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F30D61F22149C8F62A24B842 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -39,7 +37,6 @@
 		F30D64B841211A2C0DD0B202 /* QiuBaiPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuBaiPost.m; sourceTree = "<group>"; };
 		F30D6539E59F26D8F9A31EA9 /* QiuEventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuEventViewController.h; sourceTree = "<group>"; };
 		F30D65CDF8C575E835AB71DC /* QiuBaiComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuBaiComment.m; sourceTree = "<group>"; };
-		F30D6723FBF2B6D040316ACE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F30D68593168D94AE67C17E0 /* QiuBaiAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuBaiAppDelegate.m; sourceTree = "<group>"; };
 		F30D68A9D976174289B81DC8 /* QiuBaiAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuBaiAppDelegate.h; sourceTree = "<group>"; };
 		F30D690D5F320F58AB65CF5B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -47,7 +44,6 @@
 		F30D6A78503E22BBAA5B6B71 /* QiuBaiPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuBaiPost.h; sourceTree = "<group>"; };
 		F30D6B652F06976E813BE656 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		F30D6D25584E4BF96E49BF4C /* ModelStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelStore.h; sourceTree = "<group>"; };
-		F30D6D681C6728053706E806 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F30D6DC859FA0491E27BEA90 /* QiuBai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiuBai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F30D6E616BD80B8DD96A8747 /* QiuEventViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuEventViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,11 +117,9 @@
 				B1F88BC11CAA6EDC00093910 /* models */,
 				F30D6B652F06976E813BE656 /* Info.plist */,
 				F30D61F22149C8F62A24B842 /* Assets.xcassets */,
-				F30D6AB6D965E33F97C9408E /* LaunchScreen.storyboard */,
 				F30D69A8DB6E39322256ED67 /* Supporting Files */,
 				F30D68A9D976174289B81DC8 /* QiuBaiAppDelegate.h */,
 				F30D68593168D94AE67C17E0 /* QiuBaiAppDelegate.m */,
-				F30D6868BC3243BB9566DF36 /* Main.storyboard */,
 				F30D6539E59F26D8F9A31EA9 /* QiuEventViewController.h */,
 				F30D6E616BD80B8DD96A8747 /* QiuEventViewController.m */,
 				F30D695EAB881877C286354D /* QiuCircleViewController.h */,
@@ -189,8 +183,6 @@
 				B1F88BCE1CAAABE800093910 /* comments.json in Resources */,
 				B1F88BCA1CAA807E00093910 /* users.json in Resources */,
 				F30D6EF119BD6FD47F45A47B /* Assets.xcassets in Resources */,
-				F30D6A1F38579DC782510C95 /* LaunchScreen.storyboard in Resources */,
-				F30D6D4289DBBC8332B8B988 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,25 +206,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		F30D6868BC3243BB9566DF36 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F30D6D681C6728053706E806 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F30D6AB6D965E33F97C9408E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F30D6723FBF2B6D040316ACE /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F30D636E3717540D4CAD2EEC /* Debug */ = {

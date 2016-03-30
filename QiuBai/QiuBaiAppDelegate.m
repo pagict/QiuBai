@@ -10,6 +10,7 @@
 #import "QiuBaiAppDelegate.h"
 #import "ModelStore.h"
 #import "DataLoader.h"
+#import "QiuEventViewController.h"
 
 
 @interface QiuBaiAppDelegate ()
@@ -25,6 +26,19 @@
     // Override point for customization after application launch.
     [DataLoader loadData];
     [[ModelStore sharedStore] sync];
+
+
+    UINavigationController* qiubaiEventsController = [[UINavigationController alloc]
+                                                    initWithRootViewController: [[QiuEventViewController alloc] init]];
+    qiubaiEventsController.tabBarItem.title = @"糗事";
+
+    UITabBarController* tabBarController = [[UITabBarController alloc] init];
+    tabBarController.viewControllers = @[qiubaiEventsController];
+
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor clearColor];
+    self.window.rootViewController = tabBarController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
