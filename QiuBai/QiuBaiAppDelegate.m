@@ -28,9 +28,8 @@
     [[ModelStore sharedStore] sync];
 
 
-    UINavigationController* qiubaiEventsController = [[UINavigationController alloc]
-                                                    initWithRootViewController: [[QiuEventViewController alloc] init]];
-    qiubaiEventsController.tabBarItem.title = @"糗事";
+    UIViewController* qiubaiEventsController = [[QiuEventViewController alloc] init];
+
 
     UITabBarController* tabBarController = [[UITabBarController alloc] init];
     tabBarController.viewControllers = @[qiubaiEventsController];
