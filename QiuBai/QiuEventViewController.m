@@ -26,6 +26,10 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     NSInteger subViewIndex = -1;
     for(subViewIndex = 0; subViewIndex < self.subViews.count; subViewIndex++) {
         if (self.subViews[subViewIndex] == tableView) {
@@ -33,10 +37,10 @@
         }
     }
 
-    if (subViewIndex == 0) {
-        return 1;
+    switch (subViewIndex) {
+        case 0:     return self.specialOfferPosts.count;
+        default:    return 0;
     }
-    return 1;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -55,11 +59,12 @@
 
 #pragma mark - SnappingTabViewDataSource
 - (NSArray<UIView*> *)viewsInSnappingTabViewController:(SnappingTabViewController *)controller {
-    QiuBaiPostTableView *t1 = [[QiuBaiPostTableView alloc] init];
+    CGRect rect = [self tableViewFrameRect];
+    QiuBaiPostTableView *t1 = [[QiuBaiPostTableView alloc] initWithFrame:rect];
     t1.dataSource = self;
     t1.delegate = self;
     [self.subViews addObject:t1];
-    QiuBaiPostTableView *t2 = [[QiuBaiPostTableView alloc] init];
+    QiuBaiPostTableView *t2 = [[QiuBaiPostTableView alloc] initWithFrame:rect];
     t2.dataSource = self;
     t2.delegate = self;
     [self.subViews addObject:t2];
@@ -70,13 +75,12 @@
 }
 
 - (instancetype)init {
-    SnappingTabViewController *snappingTabViewController = [[SnappingTabViewController alloc] init];
-    snappingTabViewController.datasource = self;
-    self = [super initWithRootViewController:snappingTabViewController];
+    self = [super init];
     if (self) {
         self.navigationBar.translucent = NO;
         self.tabBarController.tabBar.translucent = NO;
         self.tabBarItem.title = @"糗事";
+
     }
     return self;
 }
@@ -85,6 +89,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    CGFloat naviHeight = self.navigationBar.frame.size.height;
+    CGFloat tabHeight = self.tabBarController.tabBar.frame.size.height;
+    CGRect rect = CGRectMake(0, naviHeight,
+                             [UIScreen mainScreen].bounds.size.width,
+                             [UIScreen mainScreen].bounds.size.height - naviHeight - tabHeight);
+    SnappingTabViewController *snappingTabViewController = [[SnappingTabViewController alloc] initWithFrame:rect];
+    self.viewControllers = @[snappingTabViewController];
+    snappingTabViewController.datasource = self;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,6 +109,11 @@
     ModelStore* sharedStore = [ModelStore sharedStore];
     NSArray* posts = [sharedStore allPosts];
     return posts;
+}
+
+- (CGRect)tableViewFrameRect {
+    SnappingTabViewController* snappingTab = (SnappingTabViewController*)self.topViewController;
+    return [snappingTab subViewRect];
 }
 
 @end

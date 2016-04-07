@@ -11,6 +11,8 @@
 #import "SnappingTabViewDelegate.h"
 
 @interface SnappingTabViewController : UIViewController
+- (instancetype)initWithFrame:(CGRect)frame;
+
 @property (weak, nonatomic) id<SnappingTabViewDataSource> datasource;
 @property (weak, nonatomic) id<SnappingTabViewDelegate> delegate;
 
@@ -18,4 +20,8 @@
 @property (nonatomic)         CGFloat indicatorHeight;
 @property (strong, nonatomic) UIColor* indicatorColor;
 @property (strong, nonatomic) UIColor* titleButtonHightlightColor;
+
+@property (nonatomic)         CGFloat titleViewHeight;
+
+- (CGRect)subViewRect;
 @end

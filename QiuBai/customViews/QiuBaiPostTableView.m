@@ -9,12 +9,17 @@
 #import "QiuBaiPostTableView.h"
 #import "QiuBaiPostTableViewCell.h"
 
+@interface QiuBaiPostTableView () <UITableViewDelegate>
+
+@end
+
 @implementation QiuBaiPostTableView
-- (instancetype)init {
-    self = [super initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame style:UITableViewStyleGrouped];
     if (self) {
         UINib* cellNib = [UINib nibWithNibName:@"QiuBaiPostTableViewCell" bundle:nil];
         [self registerNib:cellNib forCellReuseIdentifier:@"QiuBaiPostTableViewCell"];
+        self.delegate = self;
     }
     return self;
 }
@@ -31,4 +36,7 @@
     return [cell heightWithPost:post] + [cell staticHeight];
 }
 
+- (CGFloat)sectionHeaderHeight {
+    return 1.0;
+}
 @end

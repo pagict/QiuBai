@@ -21,7 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIButton * _Nullable dislikeButtn;
 @property (weak, nonatomic) IBOutlet UIButton * _Nullable addCommentButton;
 
-@property (strong, nonnull) UIFont* contentLabelFont;
+@property (strong, nonatomic) UIFont* contentLabelFont;
+@property (strong, nonatomic) UIFont* infoLabelFont;
 
 - (void)setUpWith:(nullable QiuBaiPost*)post;
 - (CGFloat)heightWithPost:(nullable QiuBaiPost*)post;

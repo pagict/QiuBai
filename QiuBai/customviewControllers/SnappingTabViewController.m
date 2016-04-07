@@ -10,23 +10,70 @@
 
 @interface SnappingTabViewController ()
 @property (strong, nonatomic) IBOutlet UIStackView *tabTitlesView;
-
+@property (strong, nonatomic) IBOutlet UIView* indicatorView;
+@property (strong, nonatomic) IBOutlet UIScrollView* scrollView;
 @end
 
 @implementation SnappingTabViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (instancetype)initWithFrame:(CGRect)frame {
+//    self = [super initWithNibName:@"SnappingTabViewController" bundle:nil];
+    self = [super init];
+    if (self) {
+        self.view.backgroundColor = [UIColor clearColor];
+        self.titleViewHeight = 20;
+        self.indicatorHeight = 0;
+        self.titleFont = [UIFont systemFontOfSize:self.titleViewHeight - 10];
 
-    // Default properties
-    self.titleFont = [UIFont systemFontOfSize:10];
-    // Do any additional setup after loading the view from its nib.
-    CGFloat startY = self.topLayoutGuide.length;
-    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-    CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+        [self initViewsWithFrame:frame];
+    }
 
-    NSArray<NSString*>* titles = [self.datasource titlesInSnappingTabViewController:self];
+    return self;
+}
 
+- (void)initViewsWithFrame:(CGRect)frame {
+    CGRect titlesViewFrame = CGRectMake(frame.origin.x,
+                                        0,
+                                        frame.size.width,
+                                        self.titleViewHeight);
+    self.tabTitlesView = [[UIStackView alloc] initWithFrame:titlesViewFrame];
+    self.tabTitlesView.axis = UILayoutConstraintAxisHorizontal;
+    self.tabTitlesView.distribution = UIStackViewDistributionEqualCentering | UIStackViewDistributionFill;
+    self.tabTitlesView.alignment = UIStackViewAlignmentCenter;
+    self.tabTitlesView.layoutMarginsRelativeArrangement = YES;
+    self.tabTitlesView.distribution = UIStackViewDistributionEqualCentering | UIStackViewDistributionFill;
+    self.tabTitlesView.alignment = UIStackViewAlignmentCenter;
+
+    [self.view addSubview:self.tabTitlesView];
+
+    CGRect indicatorsViewFrame = CGRectMake(titlesViewFrame.origin.x,
+                                            titlesViewFrame.origin.y + titlesViewFrame.size.height,
+                                            titlesViewFrame.size.width,
+                                            self.indicatorHeight);
+//    self.indicatorView = [[UIView alloc] initWithFrame:indicatorsViewFrame];                 //TODO
+//    [self.view addSubview:self.indicatorView];
+
+    CGRect scrollViewFrame = CGRectMake(frame.origin.x,
+                                        0 + indicatorsViewFrame.origin.y + indicatorsViewFrame.size.height,
+                                        frame.size.width,
+                                        frame.size.height - titlesViewFrame.size.height - indicatorsViewFrame.size.height);
+
+    self.scrollView = [[UIScrollView alloc] initWithFrame:scrollViewFrame];
+    self.scrollView.bounces = NO;
+    self.scrollView.pagingEnabled = YES;
+    [self.view addSubview:self.scrollView];
+
+}
+
+- (void)setDatasource:(id<SnappingTabViewDataSource>)datasource {
+    NSArray<NSString*>* titles = [datasource titlesInSnappingTabViewController:self];
+    [self setupTitleBar:titles];
+
+    NSArray<UIView*>* tabViews = [datasource viewsInSnappingTabViewController:self];
+    [self setupScrollViewBy:tabViews];
+}
+
+- (void)setupTitleBar:(NSArray<NSString*>*)titles {
     CGFloat maxButtonWidth = 0;
     CGFloat maxButtonHeight = 0;
     NSMutableArray<UIButton*>* titleButtons = [[NSMutableArray alloc] init];
@@ -47,18 +94,12 @@
         }
     }
 
-
     CGFloat titleBarWidth = maxButtonWidth * titleButtons.count;
-    CGRect tabsViewFrame = CGRectMake( screenWidth/2 - titleBarWidth/2, startY, titleBarWidth, maxButtonHeight);
-    self.tabTitlesView = [[UIStackView alloc] initWithFrame:tabsViewFrame];
-    self.tabTitlesView.axis = UILayoutConstraintAxisHorizontal;
-    self.tabTitlesView.distribution = UIStackViewDistributionEqualCentering | UIStackViewDistributionFill;
-    self.tabTitlesView.alignment = UIStackViewAlignmentCenter;
-    self.tabTitlesView.layoutMarginsRelativeArrangement = YES;
-    [self.tabTitlesView sizeToFit];
-
-
-    [self.view addSubview:self.tabTitlesView];
+    CGRect tabsViewFrame = CGRectMake(self.scrollView.frame.origin.x + self.scrollView.frame.size.width/2 - titleBarWidth/2,
+                                      self.tabTitlesView.frame.origin.y,
+                                      titleBarWidth,
+                                      maxButtonHeight);
+    self.tabTitlesView.frame = tabsViewFrame;
 
     for (UIButton* btn in titleButtons) {
         [self.tabTitlesView addArrangedSubview:btn];
@@ -69,28 +110,36 @@
         btn.frame = frame;
         btn.backgroundColor = [UIColor lightGrayColor];
     }
-    NSArray<UIView*>* tabViews = [self.datasource viewsInSnappingTabViewController:self];
 
-    UIScrollView* scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, screenWidth, screenHeight - 20)];
-    [self.view addSubview:scrollView];
+}
 
-    scrollView.contentSize  = CGSizeMake(tabViews.count * screenWidth, screenHeight);
-    scrollView.bounces = NO;
+- (void)setupScrollViewBy:(NSArray<UIView*>*)tabViews {
+
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * tabViews.count,
+                                             self.scrollView.frame.size.height);
 
     int i = 0;
     for( UIView* tabView in tabViews) {
         CGRect frame = tabView.frame;
-        frame.origin.x = i++ * screenWidth;
+        frame.origin.x = i++ * self.scrollView.frame.size.width;
         tabView.frame = frame;
-        [scrollView addSubview:tabView];
+        [self.scrollView addSubview:tabView];
     }
+}
 
-    scrollView.pagingEnabled = YES;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (CGRect)subViewRect {
+    return self.scrollView.frame;
 }
 
 /*

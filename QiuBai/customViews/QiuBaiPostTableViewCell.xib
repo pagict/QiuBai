@@ -30,50 +30,48 @@
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kD6-3y-a5h">
                         <rect key="frame" x="56" y="13" width="208" height="30"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                        <state key="normal" title="Button"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="8lZ-yH-5vC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                        <state key="normal" title="Nickname">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVT-9B-tee">
-                        <rect key="frame" x="8" y="54" width="304" height="276.5"/>
-                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSK-EE-Zhb">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSK-EE-Zhb">
                         <rect key="frame" x="48" y="367" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="9TG-fj-dsq"/>
                             <constraint firstAttribute="height" constant="25" id="xCW-2F-UGJ"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <state key="normal" image="angry_gray.png"/>
                         <connections>
                             <action selector="tapToDislikePost:" destination="x0R-DY-82G" eventType="touchUpInside" id="Xie-nO-3jp"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5u2-z8-2Jp">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5u2-z8-2Jp">
                         <rect key="frame" x="124" y="367" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="XhZ-tF-OrD"/>
                             <constraint firstAttribute="width" constant="25" id="stB-OE-Ncn"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <state key="normal" image="comment.png"/>
                         <connections>
                             <action selector="tapToCommentPost:" destination="x0R-DY-82G" eventType="touchUpInside" id="Elv-Dz-cNZ"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Us4-VO-JcX">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Us4-VO-JcX">
                         <rect key="frame" x="280" y="367" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="cla-TA-biI"/>
                             <constraint firstAttribute="height" constant="25" id="s7y-63-jWa"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <state key="normal" image="share.png"/>
                         <connections>
                             <action selector="tapToSharePost:" destination="x0R-DY-82G" eventType="touchUpInside" id="ro2-b4-2za"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZY-C3-uv9">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZY-C3-uv9">
                         <rect key="frame" x="8" y="338" width="304" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="wNA-vX-thZ"/>
@@ -82,13 +80,15 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8K-QD-n24">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8K-QD-n24">
                         <rect key="frame" x="8" y="367" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="DDx-rq-Rsl"/>
                             <constraint firstAttribute="width" constant="25" id="hrF-gv-Dfb"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <state key="normal" image="smiley_gray.png">
+                            <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
                         <connections>
                             <action selector="tapToLikePost:" destination="x0R-DY-82G" eventType="touchUpInside" id="O42-ls-1eO"/>
                         </connections>
@@ -99,15 +99,21 @@
                             <constraint firstAttribute="height" constant="30" id="M30-q4-ONx"/>
                             <constraint firstAttribute="width" constant="40" id="nr8-jQ-BFm"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
                         <connections>
                             <action selector="tapToViewUserInfo:" destination="x0R-DY-82G" eventType="touchUpInside" id="GMf-rZ-efv"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVT-9B-tee">
+                        <rect key="frame" x="8" y="54" width="304" height="276"/>
+                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
-                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="kD6-3y-a5h" firstAttribute="baseline" secondItem="pem-Xt-VqX" secondAttribute="baseline" id="3tZ-hi-EUT"/>
+                    <constraint firstItem="kD6-3y-a5h" firstAttribute="top" secondItem="rb8-F2-Rov" secondAttribute="topMargin" constant="5" id="4O7-vv-gRQ"/>
                     <constraint firstItem="5u2-z8-2Jp" firstAttribute="leading" secondItem="hSK-EE-Zhb" secondAttribute="trailing" constant="51" id="8q7-zF-nHw"/>
                     <constraint firstAttribute="topMargin" secondItem="TMA-hH-f81" secondAttribute="top" id="Acy-qe-tl0"/>
                     <constraint firstItem="jZY-C3-uv9" firstAttribute="top" secondItem="UVT-9B-tee" secondAttribute="bottom" constant="8" id="Ao3-C4-zFi"/>
@@ -155,4 +161,10 @@
             <point key="canvasLocation" x="309" y="559.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="angry_gray.png" width="25" height="25"/>
+        <image name="comment.png" width="25" height="25"/>
+        <image name="share.png" width="25" height="25"/>
+        <image name="smiley_gray.png" width="25" height="25"/>
+    </resources>
 </document>
