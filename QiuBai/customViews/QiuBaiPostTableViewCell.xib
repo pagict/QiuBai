@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QiuBaiPostTableViewCell" rowHeight="409" id="x0R-DY-82G" customClass="QiuBaiPostTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="409"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x0R-DY-82G" id="rb8-F2-Rov">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="408.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TMA-hH-f81">
+                        <rect key="frame" x="8" y="8" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="cyz-sQ-EA7"/>
+                            <constraint firstAttribute="height" constant="40" id="u6H-c2-BSY"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBV-e1-Wzh">
+                        <rect key="frame" x="8" y="8" width="40" height="40"/>
+                        <connections>
+                            <action selector="tapToViewUserInfo:" destination="x0R-DY-82G" eventType="touchUpInside" id="ErZ-c4-aot"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kD6-3y-a5h">
+                        <rect key="frame" x="56" y="13" width="208" height="30"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                        <state key="normal" title="Button"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVT-9B-tee">
+                        <rect key="frame" x="8" y="54" width="304" height="276.5"/>
+                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSK-EE-Zhb">
+                        <rect key="frame" x="48" y="367" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="9TG-fj-dsq"/>
+                            <constraint firstAttribute="height" constant="25" id="xCW-2F-UGJ"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="tapToDislikePost:" destination="x0R-DY-82G" eventType="touchUpInside" id="Xie-nO-3jp"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5u2-z8-2Jp">
+                        <rect key="frame" x="124" y="367" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="XhZ-tF-OrD"/>
+                            <constraint firstAttribute="width" constant="25" id="stB-OE-Ncn"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="tapToCommentPost:" destination="x0R-DY-82G" eventType="touchUpInside" id="Elv-Dz-cNZ"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Us4-VO-JcX">
+                        <rect key="frame" x="280" y="367" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="cla-TA-biI"/>
+                            <constraint firstAttribute="height" constant="25" id="s7y-63-jWa"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="tapToSharePost:" destination="x0R-DY-82G" eventType="touchUpInside" id="ro2-b4-2za"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZY-C3-uv9">
+                        <rect key="frame" x="8" y="338" width="304" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="wNA-vX-thZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8K-QD-n24">
+                        <rect key="frame" x="8" y="367" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="DDx-rq-Rsl"/>
+                            <constraint firstAttribute="width" constant="25" id="hrF-gv-Dfb"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="tapToLikePost:" destination="x0R-DY-82G" eventType="touchUpInside" id="O42-ls-1eO"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pem-Xt-VqX">
+                        <rect key="frame" x="272" y="13" width="40" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="M30-q4-ONx"/>
+                            <constraint firstAttribute="width" constant="40" id="nr8-jQ-BFm"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="tapToViewUserInfo:" destination="x0R-DY-82G" eventType="touchUpInside" id="GMf-rZ-efv"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="kD6-3y-a5h" firstAttribute="baseline" secondItem="pem-Xt-VqX" secondAttribute="baseline" id="3tZ-hi-EUT"/>
+                    <constraint firstItem="5u2-z8-2Jp" firstAttribute="leading" secondItem="hSK-EE-Zhb" secondAttribute="trailing" constant="51" id="8q7-zF-nHw"/>
+                    <constraint firstAttribute="topMargin" secondItem="TMA-hH-f81" secondAttribute="top" id="Acy-qe-tl0"/>
+                    <constraint firstItem="jZY-C3-uv9" firstAttribute="top" secondItem="UVT-9B-tee" secondAttribute="bottom" constant="8" id="Ao3-C4-zFi"/>
+                    <constraint firstItem="kD6-3y-a5h" firstAttribute="leading" secondItem="UBV-e1-Wzh" secondAttribute="trailing" constant="8" id="B44-B8-9gf"/>
+                    <constraint firstItem="UBV-e1-Wzh" firstAttribute="top" secondItem="TMA-hH-f81" secondAttribute="top" id="Da1-Gq-njR"/>
+                    <constraint firstItem="UBV-e1-Wzh" firstAttribute="width" secondItem="TMA-hH-f81" secondAttribute="width" id="HRh-90-Lp8"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="jZY-C3-uv9" secondAttribute="leading" id="IU5-MX-GH3"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="TMA-hH-f81" secondAttribute="leading" id="Nwn-Yf-U0y"/>
+                    <constraint firstItem="UBV-e1-Wzh" firstAttribute="height" secondItem="TMA-hH-f81" secondAttribute="height" id="PPm-Mt-aNV"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="UVT-9B-tee" secondAttribute="leading" id="PtO-Lj-wh6"/>
+                    <constraint firstItem="pem-Xt-VqX" firstAttribute="top" secondItem="rb8-F2-Rov" secondAttribute="topMargin" constant="5" id="RDE-qf-Qgp"/>
+                    <constraint firstItem="Us4-VO-JcX" firstAttribute="baseline" secondItem="5u2-z8-2Jp" secondAttribute="baseline" id="SCp-Zc-QGY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="pem-Xt-VqX" secondAttribute="trailing" id="Srw-Di-4rX"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Z8K-QD-n24" secondAttribute="bottom" constant="8" id="aE9-mS-Cxl"/>
+                    <constraint firstItem="Z8K-QD-n24" firstAttribute="top" secondItem="jZY-C3-uv9" secondAttribute="bottom" constant="8" id="aOb-Aj-5Gy"/>
+                    <constraint firstItem="hSK-EE-Zhb" firstAttribute="baseline" secondItem="Z8K-QD-n24" secondAttribute="baseline" id="bPG-HN-oeX"/>
+                    <constraint firstItem="5u2-z8-2Jp" firstAttribute="baseline" secondItem="hSK-EE-Zhb" secondAttribute="baseline" id="fvv-Zj-a5p"/>
+                    <constraint firstItem="Us4-VO-JcX" firstAttribute="leading" secondItem="5u2-z8-2Jp" secondAttribute="trailing" constant="131" id="hRv-vO-eMw"/>
+                    <constraint firstItem="hSK-EE-Zhb" firstAttribute="leading" secondItem="Z8K-QD-n24" secondAttribute="trailing" constant="15" id="kFM-8b-juD"/>
+                    <constraint firstItem="UBV-e1-Wzh" firstAttribute="leading" secondItem="TMA-hH-f81" secondAttribute="leading" id="l05-wt-AcA"/>
+                    <constraint firstItem="kD6-3y-a5h" firstAttribute="baseline" secondItem="TMA-hH-f81" secondAttribute="baseline" id="l9e-er-LUt"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="UVT-9B-tee" secondAttribute="trailing" id="ln9-Kv-hFi"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="Z8K-QD-n24" secondAttribute="leading" id="nPt-Cw-fkA"/>
+                    <constraint firstItem="kD6-3y-a5h" firstAttribute="baseline" secondItem="UBV-e1-Wzh" secondAttribute="baseline" id="pAQ-6Y-qbO"/>
+                    <constraint firstItem="pem-Xt-VqX" firstAttribute="leading" secondItem="kD6-3y-a5h" secondAttribute="trailing" constant="8" id="qfc-oK-Mi3"/>
+                    <constraint firstItem="UVT-9B-tee" firstAttribute="top" secondItem="UBV-e1-Wzh" secondAttribute="bottom" constant="6" id="uf2-wj-mlT"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="jZY-C3-uv9" secondAttribute="trailing" id="zmy-ES-SOW"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="l9e-er-LUt"/>
+                        <exclude reference="pAQ-6Y-qbO"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="addCommentButton" destination="5u2-z8-2Jp" id="T1m-I7-6nP"/>
+                <outlet property="dislikeButtn" destination="hSK-EE-Zhb" id="83a-o3-Vhp"/>
+                <outlet property="likeButton" destination="Z8K-QD-n24" id="504-Mb-2Ai"/>
+                <outlet property="nickNameButton" destination="kD6-3y-a5h" id="DRV-h5-Afd"/>
+                <outlet property="postContentLabel" destination="UVT-9B-tee" id="iDo-sB-3Aw"/>
+                <outlet property="postInfoLable" destination="jZY-C3-uv9" id="Y3r-KI-ATu"/>
+                <outlet property="profileImageView" destination="TMA-hH-f81" id="PbA-Z8-Drm"/>
+            </connections>
+            <point key="canvasLocation" x="309" y="559.5"/>
+        </tableViewCell>
+    </objects>
+</document>

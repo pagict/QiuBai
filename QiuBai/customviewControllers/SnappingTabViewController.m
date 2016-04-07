@@ -33,7 +33,7 @@
     for (NSString* title in titles) {
         UIButton* btn = [[UIButton alloc] init];
         [titleButtons addObject:btn];
-        btn.titleLabel.text = title;
+        [btn setTitle:title forState:UIControlStateNormal];
         btn.titleLabel.font = self.titleFont;
         [btn sizeToFit];
         CGFloat width = btn.frame.size.width;

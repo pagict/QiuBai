@@ -24,9 +24,9 @@
         formatter.dateFormat = @"yyyy-MM-dd hh:mm:ss";
         self.postDate = [formatter dateFromString:[attributeDictionary objectForKey:@"postDate"]];
         self.hot = ((NSNumber *)[attributeDictionary objectForKey:@"isHot"]).boolValue;
-        self.new = ((NSNumber *)[attributeDictionary objectForKey:@"isNew"]).boolValue;
+        self.newPost = ((NSNumber *)[attributeDictionary objectForKey:@"isNew"]).boolValue;
 
-        u_int64_t postAuthorID = ((NSNumber *)[attributeDictionary objectForKey:@"postAuthor"]).unsignedLongLongValue;
+        u_int64_t postAuthorID = ((NSNumber *)[attributeDictionary objectForKey:@"postAuthorID"]).unsignedLongLongValue;
         self.postAuthor = [[ModelStore sharedStore] userWithID:postAuthorID];
 
         //TODO:comments Array

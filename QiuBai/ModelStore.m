@@ -126,4 +126,8 @@
     if (post)
         [self.postStore removeObject:post];
 }
+
+- (NSArray*)allPosts {
+    return [_postStore allObjects];
+}
 @end

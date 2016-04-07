@@ -18,7 +18,7 @@
 @property (strong, nonatomic)           NSMutableArray *comments;
 
 @property (nonatomic, getter=isHot)     BOOL            hot;
-@property (nonatomic, getter=isNew)     BOOL            new;
+@property (nonatomic, getter=isNew)     BOOL            newPost;
 
 - (instancetype)initWithJSONDictionary:(NSDictionary *)attributeDictionary;
 @end

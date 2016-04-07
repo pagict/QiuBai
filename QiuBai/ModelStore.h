@@ -20,6 +20,7 @@
 - (void)insertPost:(QiuBaiPost *)post;
 - (QiuBaiPost *)postWithID:(u_int64_t)postId;
 - (void)deletePostWithID:(u_int64_t)postId;
+- (NSArray*)allPosts;
 
 - (void)insertComment:(QiuBaiComment *)comment;
 - (QiuBaiComment *)commentWithID:(u_int64_t)commentId;

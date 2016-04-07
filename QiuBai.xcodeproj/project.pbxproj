@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B11313B91CAD042200F883A0 /* QiuBaiPostTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B11313B81CAD042200F883A0 /* QiuBaiPostTableView.m */; };
+		B11313BC1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B11313BB1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m */; };
+		B11313BE1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B11313BD1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib */; };
 		B1A5DBC31CABBCFA00510A86 /* SnappingTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A5DBC11CABBCFA00510A86 /* SnappingTabViewController.m */; };
 		B1A5DBC41CABBCFA00510A86 /* SnappingTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1A5DBC21CABBCFA00510A86 /* SnappingTabViewController.xib */; };
 		B1F88BC41CAA6F0200093910 /* QiuBaiUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F88BC31CAA6F0200093910 /* QiuBaiUser.m */; };
@@ -25,6 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B11313B71CAD042200F883A0 /* QiuBaiPostTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiPostTableView.h; path = customViews/QiuBaiPostTableView.h; sourceTree = "<group>"; };
+		B11313B81CAD042200F883A0 /* QiuBaiPostTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiPostTableView.m; path = customViews/QiuBaiPostTableView.m; sourceTree = "<group>"; };
+		B11313BA1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiPostTableViewCell.h; path = customViews/QiuBaiPostTableViewCell.h; sourceTree = "<group>"; };
+		B11313BB1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiPostTableViewCell.m; path = customViews/QiuBaiPostTableViewCell.m; sourceTree = "<group>"; };
+		B11313BD1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QiuBaiPostTableViewCell.xib; path = customViews/QiuBaiPostTableViewCell.xib; sourceTree = "<group>"; };
 		B1A5DBC01CABBCFA00510A86 /* SnappingTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnappingTabViewController.h; path = customviewControllers/SnappingTabViewController.h; sourceTree = "<group>"; };
 		B1A5DBC11CABBCFA00510A86 /* SnappingTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnappingTabViewController.m; path = customviewControllers/SnappingTabViewController.m; sourceTree = "<group>"; };
 		B1A5DBC21CABBCFA00510A86 /* SnappingTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SnappingTabViewController.xib; path = customviewControllers/SnappingTabViewController.xib; sourceTree = "<group>"; };
@@ -66,6 +74,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B11313B31CAD03CD00F883A0 /* customViews */ = {
+			isa = PBXGroup;
+			children = (
+				B11313B71CAD042200F883A0 /* QiuBaiPostTableView.h */,
+				B11313B81CAD042200F883A0 /* QiuBaiPostTableView.m */,
+				B11313BA1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.h */,
+				B11313BB1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m */,
+				B11313BD1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib */,
+			);
+			name = customViews;
+			sourceTree = "<group>";
+		};
 		B1A5DBBF1CABBCBE00510A86 /* customViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +153,7 @@
 		F30D6F211E72B0CC4D25184A /* QiuBai */ = {
 			isa = PBXGroup;
 			children = (
+				B11313B31CAD03CD00F883A0 /* customViews */,
 				B1A5DBBF1CABBCBE00510A86 /* customViewControllers */,
 				B1F88BC11CAA6EDC00093910 /* models */,
 				F30D6B652F06976E813BE656 /* Info.plist */,
@@ -203,6 +224,7 @@
 				B1A5DBC41CABBCFA00510A86 /* SnappingTabViewController.xib in Resources */,
 				B1F88BCE1CAAABE800093910 /* comments.json in Resources */,
 				B1F88BCA1CAA807E00093910 /* users.json in Resources */,
+				B11313BE1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib in Resources */,
 				F30D6EF119BD6FD47F45A47B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,7 +238,9 @@
 			files = (
 				F30D6949FAC5BF583679123E /* main.m in Sources */,
 				F30D6B2D1147BB43629A0D6E /* QiuBaiAppDelegate.m in Sources */,
+				B11313B91CAD042200F883A0 /* QiuBaiPostTableView.m in Sources */,
 				B1F88BC81CAA78A800093910 /* DataLoader.m in Sources */,
+				B11313BC1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m in Sources */,
 				F30D674DEFC71FE35EBA6690 /* QiuEventViewController.m in Sources */,
 				B1F88BC41CAA6F0200093910 /* QiuBaiUser.m in Sources */,
 				F30D6D88A81BC6DFC5FC2F68 /* QiuCircleViewController.m in Sources */,
