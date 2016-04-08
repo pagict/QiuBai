@@ -71,7 +71,7 @@
     return @[t1, t2]; 
 }
 - (NSArray<NSString*> *)titlesInSnappingTabViewController:(SnappingTabViewController *)controller {
-    return @[@"tab1", @"tabl"];
+    return @[@"tab1", @"long--tab--name"];
 }
 
 - (instancetype)init {

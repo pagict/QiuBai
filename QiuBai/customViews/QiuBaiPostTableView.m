@@ -20,6 +20,10 @@
         UINib* cellNib = [UINib nibWithNibName:@"QiuBaiPostTableViewCell" bundle:nil];
         [self registerNib:cellNib forCellReuseIdentifier:@"QiuBaiPostTableViewCell"];
         self.delegate = self;
+
+        //test
+        self.layer.borderColor = [UIColor yellowColor].CGColor;
+        self.layer.borderWidth = 2.0;
     }
     return self;
 }
@@ -36,7 +40,7 @@
     return [cell heightWithPost:post] + [cell staticHeight];
 }
 
-- (CGFloat)sectionHeaderHeight {
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 1.0;
 }
 @end

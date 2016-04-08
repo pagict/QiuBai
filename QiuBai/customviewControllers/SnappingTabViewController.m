@@ -17,13 +17,13 @@
 @implementation SnappingTabViewController
 
 - (instancetype)initWithFrame:(CGRect)frame {
-//    self = [super initWithNibName:@"SnappingTabViewController" bundle:nil];
     self = [super init];
     if (self) {
-        self.view.backgroundColor = [UIColor clearColor];
+        self.view.backgroundColor = [UIColor redColor];
+//        self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
         self.titleViewHeight = 20;
         self.indicatorHeight = 0;
-        self.titleFont = [UIFont systemFontOfSize:self.titleViewHeight - 10];
+        self.titleFont = [UIFont systemFontOfSize:self.titleViewHeight];
 
         [self initViewsWithFrame:frame];
     }
@@ -32,17 +32,18 @@
 }
 
 - (void)initViewsWithFrame:(CGRect)frame {
-    CGRect titlesViewFrame = CGRectMake(frame.origin.x,
+    CGRect titlesViewFrame = CGRectMake(0,
                                         0,
                                         frame.size.width,
                                         self.titleViewHeight);
     self.tabTitlesView = [[UIStackView alloc] initWithFrame:titlesViewFrame];
     self.tabTitlesView.axis = UILayoutConstraintAxisHorizontal;
-    self.tabTitlesView.distribution = UIStackViewDistributionEqualCentering | UIStackViewDistributionFill;
+    self.tabTitlesView.distribution = UIStackViewDistributionEqualSpacing;
     self.tabTitlesView.alignment = UIStackViewAlignmentCenter;
     self.tabTitlesView.layoutMarginsRelativeArrangement = YES;
-    self.tabTitlesView.distribution = UIStackViewDistributionEqualCentering | UIStackViewDistributionFill;
     self.tabTitlesView.alignment = UIStackViewAlignmentCenter;
+    self.tabTitlesView.spacing = 2.0;
+    self.tabTitlesView.autoresizesSubviews = YES;
 
     [self.view addSubview:self.tabTitlesView];
 
@@ -74,43 +75,19 @@
 }
 
 - (void)setupTitleBar:(NSArray<NSString*>*)titles {
-    CGFloat maxButtonWidth = 0;
-    CGFloat maxButtonHeight = 0;
-    NSMutableArray<UIButton*>* titleButtons = [[NSMutableArray alloc] init];
+    CGFloat btnWidth = 50;
+    CGFloat width = btnWidth * titles.count + self.tabTitlesView.spacing * (titles.count - 1);
+    CGFloat originX = self.view.frame.size.width / 2 - width / 2;
+    CGRect  newFrame = CGRectMake(originX, 0, width, self.titleViewHeight);
+    self.tabTitlesView.frame = newFrame;
     for (NSString* title in titles) {
-        UIButton* btn = [[UIButton alloc] init];
-        [titleButtons addObject:btn];
+        CGRect btnFrame = CGRectMake(0, 0, btnWidth, self.titleViewHeight);
+        UIButton* btn = [[UIButton alloc] initWithFrame:btnFrame];
         [btn setTitle:title forState:UIControlStateNormal];
-        btn.titleLabel.font = self.titleFont;
-        [btn sizeToFit];
-        CGFloat width = btn.frame.size.width;
-        CGFloat height = btn.frame.size.height;
-        if (width > maxButtonWidth) {
-            maxButtonWidth = width;
-        }
-
-        if (height > maxButtonHeight) {
-            maxButtonHeight = height;
-        }
-    }
-
-    CGFloat titleBarWidth = maxButtonWidth * titleButtons.count;
-    CGRect tabsViewFrame = CGRectMake(self.scrollView.frame.origin.x + self.scrollView.frame.size.width/2 - titleBarWidth/2,
-                                      self.tabTitlesView.frame.origin.y,
-                                      titleBarWidth,
-                                      maxButtonHeight);
-    self.tabTitlesView.frame = tabsViewFrame;
-
-    for (UIButton* btn in titleButtons) {
-        [self.tabTitlesView addArrangedSubview:btn];
-
-        CGRect frame = btn.frame;
-        frame.size.width = maxButtonWidth;
-        frame.size.height = maxButtonHeight;
-        btn.frame = frame;
         btn.backgroundColor = [UIColor lightGrayColor];
+        [self.tabTitlesView addArrangedSubview:btn];
+        btn.titleLabel.font = self.titleFont;
     }
-
 }
 
 - (void)setupScrollViewBy:(NSArray<UIView*>*)tabViews {
