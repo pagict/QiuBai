@@ -15,7 +15,7 @@
      self.commentContent = [dictionary objectForKey:@"commentContent"];
      self.likeCount = ((NSNumber *)[dictionary objectForKey:@"likeCount"]).unsignedLongLongValue;
 
-     u_int64_t authorID = ((NSNumber *)[dictionary objectForKey:@"commentAuthor"]).unsignedLongLongValue;
+     u_int64_t authorID = ((NSNumber *)[dictionary objectForKey:@"commentAuthorID"]).unsignedLongLongValue;
      self.commentAuthor = [[ModelStore sharedStore] userWithID:authorID];
 
      self.respondCommentIDs = [dictionary objectForKey:@"respondCommentIDs"];
