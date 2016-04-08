@@ -4,18 +4,20 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "QiuBaiDataObject.h"
 #import "QiuBaiUser.h"
 
-@interface QiuBaiPost : NSObject
+@interface QiuBaiPost : QiuBaiDataObject
 @property (nonatomic)                   u_int64_t       postID;
+@property (nonatomic)                   u_int64_t       postAuthorID;
 @property (strong, nonatomic)           QiuBaiUser *    postAuthor;
 @property (strong, nonatomic)           NSString *      postContent;
 @property (strong, nonatomic)           NSDate *        postDate;
 @property (nonatomic)                   u_int64_t       likeCount;
 @property (nonatomic)                   u_int64_t       dislikeCount;
 @property (nonatomic)                   u_int64_t       sharedCount;
-@property (strong, nonatomic)           NSMutableArray *comments;
+@property (strong, nonatomic)           NSMutableArray  *commentIDs;
+@property (strong, nonatomic)           NSMutableSet    *comments;
 
 @property (nonatomic, getter=isHot)     BOOL            hot;
 @property (nonatomic, getter=isNew)     BOOL            newPost;

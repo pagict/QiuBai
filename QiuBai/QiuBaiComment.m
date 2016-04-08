@@ -13,13 +13,21 @@
  if (self) {
      self.commentID = ((NSNumber *)[dictionary objectForKey:@"commentID"]).unsignedLongLongValue;
      self.commentContent = [dictionary objectForKey:@"commentContent"];
-     self.respondComments = [dictionary objectForKey:@"respondComments"];
      self.likeCount = ((NSNumber *)[dictionary objectForKey:@"likeCount"]).unsignedLongLongValue;
 
      u_int64_t authorID = ((NSNumber *)[dictionary objectForKey:@"commentAuthor"]).unsignedLongLongValue;
      self.commentAuthor = [[ModelStore sharedStore] userWithID:authorID];
+
+     self.respondCommentIDs = [dictionary objectForKey:@"respondCommentIDs"];
  }
  return self;
+}
+
+- (NSMutableSet*)respondComments {
+    if (!_respondComments) {
+        _respondComments = [[NSMutableSet alloc] init];
+    }
+    return _respondComments;
 }
 
 @end

@@ -3,7 +3,14 @@
 		"commentID"			: 58,
 		"commentAuthorID"	: 1,
 		"commentContent"	: "23333...",
-		"respondComments"	: [],
+		"respondCommentIDs"	: [],
+		"likeCount"			: 88
+	},
+	{
+		"commentID"			: 60,
+		"commentAuthorID"	: 1,
+		"commentContent"	: "23333...",
+		"respondCommentIDs"	: [58],
 		"likeCount"			: 88
 	}
 ]

@@ -7,9 +7,8 @@
 #import "ModelStore.h"
 
 
-@implementation QiuBaiPost {
+@implementation QiuBaiPost
 
-}
 - (instancetype)initWithJSONDictionary:(NSDictionary *)attributeDictionary {
     self = [super init];
     if (self)   {
@@ -26,12 +25,18 @@
         self.hot = ((NSNumber *)[attributeDictionary objectForKey:@"isHot"]).boolValue;
         self.newPost = ((NSNumber *)[attributeDictionary objectForKey:@"isNew"]).boolValue;
 
-        u_int64_t postAuthorID = ((NSNumber *)[attributeDictionary objectForKey:@"postAuthorID"]).unsignedLongLongValue;
-        self.postAuthor = [[ModelStore sharedStore] userWithID:postAuthorID];
+        self.postAuthorID = ((NSNumber *)[attributeDictionary objectForKey:@"postAuthorID"]).unsignedLongLongValue;
+        self.postAuthor = [[ModelStore sharedStore] userWithID:self.postAuthorID];
 
-        //TODO:comments Array
+        self.commentIDs = [attributeDictionary objectForKey:@"commentIDs"];
     }
     return self;
 }
 
+- (NSMutableSet*)comments {
+    if (!_comments) {
+        _comments = [[NSMutableSet alloc] init];
+    }
+    return _comments;
+}
 @end

@@ -7,20 +7,20 @@
 		"dislikeCount"	: 0,
 		"sharedCount"	: 8,
 		"postDate"		: "2015-1-30 18:22:07",
-		"comments"		: [1,3],
+		"commentIDs"	: [1,3],
 		"isHot"			: true,
 		"isNew"			: true
 	},
 	
 	{
-		"postAuthorID"	:  1,
+		"postAuthorID"	:  3,
 		"postID"		:  8,
         "postContent"	: " set to NO removes the controls from the cell.",
 		"likeCount"		: 1,
 		"dislikeCount"	: 0,
 		"sharedCount"	: 8,
 		"postDate"		: "2015-1-30 18:22:07",
-		"comments"		: [1,3],
+		"commentIDs"	: [1,3, 58, 60],
 		"isHot"			: true,
 		"isNew"			: true
 	}

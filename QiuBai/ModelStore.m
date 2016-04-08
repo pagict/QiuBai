@@ -53,11 +53,29 @@
 }
 
 - (void)syncPosts {
-    //TODO
+    for (QiuBaiPost* post in self.postStore) {
+        for (NSNumber* commentId in post.commentIDs) {
+            QiuBaiComment* comment = [[ModelStore sharedStore] commentWithID:commentId.longLongValue];
+            if (!comment)   continue;
+
+            [post.comments addObject:comment];
+        }
+
+        if (!post.postAuthor) {
+            post.postAuthor = [[ModelStore sharedStore] userWithID:post.postAuthorID];
+        }
+    }
 }
 
 - (void)syncComments {
-    //TODO
+    for (QiuBaiComment* comment in self.commentStore) {
+        for (NSNumber* commentId in comment.respondCommentIDs) {
+            QiuBaiComment* respondComent = [[ModelStore sharedStore] commentWithID:commentId.longLongValue];
+            if (!respondComent) continue;
+
+            [comment.respondComments addObject:respondComent];
+        }
+    }
 }
 
 - (void)insertUser:(QiuBaiUser *)user {

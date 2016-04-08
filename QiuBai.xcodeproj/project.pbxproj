@@ -10,6 +10,7 @@
 		B11313B91CAD042200F883A0 /* QiuBaiPostTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B11313B81CAD042200F883A0 /* QiuBaiPostTableView.m */; };
 		B11313BC1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B11313BB1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m */; };
 		B11313BE1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B11313BD1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib */; };
+		B16379061CB74C9C00070A39 /* QiuBaiDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B16379051CB74C9C00070A39 /* QiuBaiDataObject.m */; };
 		B1647BF61CB65A470035B66D /* angry_color.png in Resources */ = {isa = PBXBuildFile; fileRef = B1647BF01CB65A470035B66D /* angry_color.png */; };
 		B1647BF71CB65A470035B66D /* angry_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = B1647BF11CB65A470035B66D /* angry_gray.png */; };
 		B1647BF81CB65A470035B66D /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = B1647BF21CB65A470035B66D /* comment.png */; };
@@ -38,6 +39,8 @@
 		B11313BA1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiPostTableViewCell.h; path = customViews/QiuBaiPostTableViewCell.h; sourceTree = "<group>"; };
 		B11313BB1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiPostTableViewCell.m; path = customViews/QiuBaiPostTableViewCell.m; sourceTree = "<group>"; };
 		B11313BD1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QiuBaiPostTableViewCell.xib; path = customViews/QiuBaiPostTableViewCell.xib; sourceTree = "<group>"; };
+		B16379041CB74C9C00070A39 /* QiuBaiDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiDataObject.h; path = models/QiuBaiDataObject.h; sourceTree = "<group>"; };
+		B16379051CB74C9C00070A39 /* QiuBaiDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiDataObject.m; path = models/QiuBaiDataObject.m; sourceTree = "<group>"; };
 		B1647BF01CB65A470035B66D /* angry_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angry_color.png; path = customViews/images/angry_color.png; sourceTree = "<group>"; };
 		B1647BF11CB65A470035B66D /* angry_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = angry_gray.png; path = customViews/images/angry_gray.png; sourceTree = "<group>"; };
 		B1647BF21CB65A470035B66D /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = comment.png; path = customViews/images/comment.png; sourceTree = "<group>"; };
@@ -125,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				B1F88BC51CAA789200093910 /* backend */,
+				B16379041CB74C9C00070A39 /* QiuBaiDataObject.h */,
+				B16379051CB74C9C00070A39 /* QiuBaiDataObject.m */,
 				B1F88BC21CAA6F0200093910 /* QiuBaiUser.h */,
 				B1F88BC31CAA6F0200093910 /* QiuBaiUser.m */,
 				F30D64B841211A2C0DD0B202 /* QiuBaiPost.m */,
@@ -275,6 +280,7 @@
 				B1A5DBC31CABBCFA00510A86 /* SnappingTabViewController.m in Sources */,
 				F30D6CC7A9884720B4A592DE /* QiuBaiPost.m in Sources */,
 				F30D6B724A163030D7D05619 /* QiuBaiComment.m in Sources */,
+				B16379061CB74C9C00070A39 /* QiuBaiDataObject.m in Sources */,
 				F30D6685643820C49D21E1B0 /* ModelStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

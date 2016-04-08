@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "QiuBaiDataObject.h"
 enum MarriageStatus {
     inRelationship,
     single,
@@ -29,7 +29,7 @@ enum Stellar {
     Pisces          //双鱼
 };
 
-@interface QiuBaiUser : NSObject
+@interface QiuBaiUser : QiuBaiDataObject
 @property (nonatomic)                   u_int64_t           userID;
 @property (strong, nonatomic)           NSString *          nickName;
 @property (nonatomic)                   enum MarriageStatus marriageStatus;
