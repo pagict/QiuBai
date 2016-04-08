@@ -12,6 +12,7 @@
 #import "customviewControllers/SnappingTabViewDataSource.h"
 #import "customViews/QiuBaiPostTableView.h"
 #import "customViews/QiuBaiPostTableViewCell.h"
+#import "QiuBaiPostDetailViewController.h"
 #import "ModelStore.h"
 #import "QiuBaiPost.h"
 #import "QiuBaiUser.h"
@@ -54,6 +55,15 @@
     QiuBaiPost* post = self.specialOfferPosts[indexPath.section];
     CGFloat height = [(QiuBaiPostTableView*)tableView tableViewCellHeightWithPost:post];
     return height;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    QiuBaiPost* post = self.specialOfferPosts[indexPath.section];
+    CGRect cellFrame = [tableView cellForRowAtIndexPath:tableView.indexPathForSelectedRow].frame;
+    QiuBaiPostDetailViewController* pdvc = [[QiuBaiPostDetailViewController alloc] initWithFrame:cellFrame];
+    pdvc.post = post;
+    [self pushViewController:pdvc animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 

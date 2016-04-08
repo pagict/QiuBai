@@ -25,7 +25,7 @@
 @property (strong, nonatomic) UIFont* infoLabelFont;
 
 - (void)setUpWith:(nullable QiuBaiPost*)post;
-- (CGFloat)heightWithPost:(nullable QiuBaiPost*)post;
+- (CGFloat)contentLabelHeightWithPost:(QiuBaiPost *)post;
 - (CGFloat)staticHeight;
 - (CGFloat)cellWidth;
 @end

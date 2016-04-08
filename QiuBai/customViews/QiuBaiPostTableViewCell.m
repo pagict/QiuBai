@@ -80,7 +80,7 @@
             [NSString stringWithFormat:@"好笑 %llu - 评论 %lu", post.likeCount, (unsigned long)post.comments.count];
 }
 
-- (CGFloat)heightWithPost:(QiuBaiPost*)post {
+- (CGFloat)contentLabelHeightWithPost:(QiuBaiPost*)post {
 
     CGFloat width = [self cellWidth];
      CGFloat MAX_CELL_HEIGHT = 9999;

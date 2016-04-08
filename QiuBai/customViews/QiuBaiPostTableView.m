@@ -37,7 +37,7 @@
 
 - (CGFloat)tableViewCellHeightWithPost:(QiuBaiPost *)post {
     QiuBaiPostTableViewCell* cell = [self dequeueReusableCellWithIdentifier:@"QiuBaiPostTableViewCell"];
-    return [cell heightWithPost:post] + [cell staticHeight];
+    return [cell contentLabelHeightWithPost:post] + [cell staticHeight];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
