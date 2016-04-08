@@ -24,6 +24,12 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.nickNameButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [self.nickNameButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [self.floatMenuButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [self.likeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    self.commentContentLabel.font = self.contentLabelFont;
+    self.commentContentLabel.lineBreakMode = NSLineBreakByWordWrapping;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -36,16 +42,17 @@
     QiuBaiUser* author = comment.commentAuthor;
 
     [self.nickNameButton setTitle:author.nickName forState:UIControlStateNormal];
-    [self.floatMenuButton setTitle:[NSString stringWithFormat:@"%llu", comment.likeCount] forState:UIControlStateNormal];
+    [self.floatMenuButton setTitle:[NSString stringWithFormat:@"%lu", comment.respondComments.count] forState:UIControlStateNormal];
     self.commentContentLabel.text = comment.commentContent;
     self.commentTimeLabel.text = @"TODO: comment Time";
+    [self.likeButton setTitle:[NSString stringWithFormat:@"%llu", comment.likeCount] forState:UIControlStateNormal];
 }
 
 - (CGFloat)staticHeight {
     return 8        // top margin
     + 40            // profile btn heigh
     + 8             // profileBtn <-> contentLabel margin
-    + 6             // contentLabel <-> likeBtn margin
+    + 8             // contentLabel <-> likeBtn margin
     + 40            // likeBtn height
     + 8             // bottom margin
     ;

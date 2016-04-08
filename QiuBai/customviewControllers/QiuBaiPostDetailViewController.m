@@ -39,9 +39,6 @@
         restFrame.size.height -= frame.size.height;
         self.commentsView = [[UIView alloc] initWithFrame:restFrame];
         [self.view addSubview:self.commentsView];
-
-        self.commentsView.backgroundColor = [UIColor blueColor];
-        self.view.backgroundColor = [UIColor greenColor];
     }
     return self;
 }
@@ -58,6 +55,7 @@
 
 - (void)setPost:(QiuBaiPost *)post {
     _post = post;
+    self.navigationItem.title = [NSString stringWithFormat:@"糗事%llu", post.postID];
     CGRect allCommentsTableViewFrame = self.commentsView.frame;
     allCommentsTableViewFrame.origin.x = allCommentsTableViewFrame.origin.y = 0;
     UITableView* allCommentsTableView = [[UITableView alloc] initWithFrame:allCommentsTableViewFrame];
@@ -65,6 +63,7 @@
                forCellReuseIdentifier:@"QiuBaiCommentTableViewCell"];
     allCommentsTableView.dataSource = self;
     allCommentsTableView.delegate = self;
+    allCommentsTableView.bounces = NO;
     [self.commentsView addSubview:allCommentsTableView];
 
     [allCommentsTableView reloadData];
@@ -84,6 +83,7 @@
     if (tableView == self.postTableView) {
         QiuBaiPostTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"QiuBaiPostTableViewCell"];
         [cell setUpWith:self.post];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
 
@@ -102,6 +102,7 @@
     QiuBaiCommentTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"QiuBaiCommentTableViewCell"];
     return [cell heightWith:self.post.comments.allObjects[indexPath.row]];
 }
+
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
