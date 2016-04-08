@@ -11,7 +11,6 @@
 		B11313BC1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B11313BB1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m */; };
 		B11313BE1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B11313BD1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib */; };
 		B16379061CB74C9C00070A39 /* QiuBaiDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B16379051CB74C9C00070A39 /* QiuBaiDataObject.m */; };
-		B163790C1CB75FA600070A39 /* QiuBaiPostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B163790B1CB75FA600070A39 /* QiuBaiPostDetailViewController.m */; };
 		B16379101CB7640A00070A39 /* QiuBaiCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B163790E1CB7640A00070A39 /* QiuBaiCommentTableViewCell.m */; };
 		B16379111CB7640A00070A39 /* QiuBaiCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B163790F1CB7640A00070A39 /* QiuBaiCommentTableViewCell.xib */; };
 		B1647BF61CB65A470035B66D /* angry_color.png in Resources */ = {isa = PBXBuildFile; fileRef = B1647BF01CB65A470035B66D /* angry_color.png */; };
@@ -23,17 +22,18 @@
 		B1A5DBC31CABBCFA00510A86 /* SnappingTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A5DBC11CABBCFA00510A86 /* SnappingTabViewController.m */; };
 		B1EA0B421CB7E0E90083410E /* EditCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EA0B411CB7E0E90083410E /* EditCommentView.m */; };
 		B1EA0B441CB7E10A0083410E /* EditComment.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1EA0B431CB7E10A0083410E /* EditComment.xib */; };
+		B1EA0B4B1CB7EE2B0083410E /* ModelStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EA0B461CB7EE2B0083410E /* ModelStore.m */; };
+		B1EA0B4C1CB7EE2B0083410E /* QiuBaiComment.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EA0B481CB7EE2B0083410E /* QiuBaiComment.m */; };
+		B1EA0B4D1CB7EE2B0083410E /* QiuBaiPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EA0B4A1CB7EE2B0083410E /* QiuBaiPost.m */; };
+		B1EA0B501CB7EEA40083410E /* QiuBaiPostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EA0B4F1CB7EEA40083410E /* QiuBaiPostDetailViewController.m */; };
 		B1F88BC41CAA6F0200093910 /* QiuBaiUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F88BC31CAA6F0200093910 /* QiuBaiUser.m */; };
 		B1F88BC81CAA78A800093910 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F88BC71CAA78A800093910 /* DataLoader.m */; };
 		B1F88BCA1CAA807E00093910 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = B1F88BC91CAA807E00093910 /* users.json */; };
 		B1F88BCD1CAAABE800093910 /* posts.json in Resources */ = {isa = PBXBuildFile; fileRef = B1F88BCB1CAAABE800093910 /* posts.json */; };
 		B1F88BCE1CAAABE800093910 /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = B1F88BCC1CAAABE800093910 /* comments.json */; };
-		F30D6685643820C49D21E1B0 /* ModelStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D61876B796EDF2F4A2974 /* ModelStore.m */; };
 		F30D674DEFC71FE35EBA6690 /* QiuEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D6E616BD80B8DD96A8747 /* QiuEventViewController.m */; };
 		F30D6949FAC5BF583679123E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D690D5F320F58AB65CF5B /* main.m */; };
 		F30D6B2D1147BB43629A0D6E /* QiuBaiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D68593168D94AE67C17E0 /* QiuBaiAppDelegate.m */; };
-		F30D6B724A163030D7D05619 /* QiuBaiComment.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D65CDF8C575E835AB71DC /* QiuBaiComment.m */; };
-		F30D6CC7A9884720B4A592DE /* QiuBaiPost.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D64B841211A2C0DD0B202 /* QiuBaiPost.m */; };
 		F30D6D88A81BC6DFC5FC2F68 /* QiuCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F30D62F8908EC0850740F5A0 /* QiuCircleViewController.m */; };
 		F30D6EF119BD6FD47F45A47B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F30D61F22149C8F62A24B842 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -46,8 +46,6 @@
 		B11313BD1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QiuBaiPostTableViewCell.xib; path = customViews/QiuBaiPostTableViewCell.xib; sourceTree = "<group>"; };
 		B16379041CB74C9C00070A39 /* QiuBaiDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiDataObject.h; path = models/QiuBaiDataObject.h; sourceTree = "<group>"; };
 		B16379051CB74C9C00070A39 /* QiuBaiDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiDataObject.m; path = models/QiuBaiDataObject.m; sourceTree = "<group>"; };
-		B163790A1CB75FA600070A39 /* QiuBaiPostDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuBaiPostDetailViewController.h; sourceTree = "<group>"; };
-		B163790B1CB75FA600070A39 /* QiuBaiPostDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuBaiPostDetailViewController.m; sourceTree = "<group>"; };
 		B163790D1CB7640A00070A39 /* QiuBaiCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiCommentTableViewCell.h; path = customViews/QiuBaiCommentTableViewCell.h; sourceTree = "<group>"; };
 		B163790E1CB7640A00070A39 /* QiuBaiCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiCommentTableViewCell.m; path = customViews/QiuBaiCommentTableViewCell.m; sourceTree = "<group>"; };
 		B163790F1CB7640A00070A39 /* QiuBaiCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QiuBaiCommentTableViewCell.xib; path = customViews/QiuBaiCommentTableViewCell.xib; sourceTree = "<group>"; };
@@ -63,6 +61,14 @@
 		B1EA0B401CB7E0E90083410E /* EditCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditCommentView.h; path = customViews/EditCommentView.h; sourceTree = "<group>"; };
 		B1EA0B411CB7E0E90083410E /* EditCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditCommentView.m; path = customViews/EditCommentView.m; sourceTree = "<group>"; };
 		B1EA0B431CB7E10A0083410E /* EditComment.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditComment.xib; path = customViews/EditComment.xib; sourceTree = "<group>"; };
+		B1EA0B451CB7EE2B0083410E /* ModelStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelStore.h; path = models/ModelStore.h; sourceTree = "<group>"; };
+		B1EA0B461CB7EE2B0083410E /* ModelStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModelStore.m; path = models/ModelStore.m; sourceTree = "<group>"; };
+		B1EA0B471CB7EE2B0083410E /* QiuBaiComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiComment.h; path = models/QiuBaiComment.h; sourceTree = "<group>"; };
+		B1EA0B481CB7EE2B0083410E /* QiuBaiComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiComment.m; path = models/QiuBaiComment.m; sourceTree = "<group>"; };
+		B1EA0B491CB7EE2B0083410E /* QiuBaiPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiPost.h; path = models/QiuBaiPost.h; sourceTree = "<group>"; };
+		B1EA0B4A1CB7EE2B0083410E /* QiuBaiPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiPost.m; path = models/QiuBaiPost.m; sourceTree = "<group>"; };
+		B1EA0B4E1CB7EEA40083410E /* QiuBaiPostDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiPostDetailViewController.h; path = customviewControllers/QiuBaiPostDetailViewController.h; sourceTree = "<group>"; };
+		B1EA0B4F1CB7EEA40083410E /* QiuBaiPostDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiPostDetailViewController.m; path = customviewControllers/QiuBaiPostDetailViewController.m; sourceTree = "<group>"; };
 		B1F88BC21CAA6F0200093910 /* QiuBaiUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiUser.h; path = models/QiuBaiUser.h; sourceTree = "<group>"; };
 		B1F88BC31CAA6F0200093910 /* QiuBaiUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiUser.m; path = models/QiuBaiUser.m; sourceTree = "<group>"; };
 		B1F88BC61CAA78A800093910 /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataLoader.h; path = models/backend/DataLoader.h; sourceTree = "<group>"; };
@@ -70,20 +76,14 @@
 		B1F88BC91CAA807E00093910 /* users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = users.json; path = QiuBai/models/backend/users.json; sourceTree = "<group>"; };
 		B1F88BCB1CAAABE800093910 /* posts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = posts.json; path = QiuBai/models/backend/posts.json; sourceTree = "<group>"; };
 		B1F88BCC1CAAABE800093910 /* comments.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = comments.json; path = QiuBai/models/backend/comments.json; sourceTree = "<group>"; };
-		F30D615FA2113E2B0F828390 /* QiuBaiComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuBaiComment.h; sourceTree = "<group>"; };
-		F30D61876B796EDF2F4A2974 /* ModelStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelStore.m; sourceTree = "<group>"; };
 		F30D61F22149C8F62A24B842 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F30D62F8908EC0850740F5A0 /* QiuCircleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuCircleViewController.m; sourceTree = "<group>"; };
-		F30D64B841211A2C0DD0B202 /* QiuBaiPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuBaiPost.m; sourceTree = "<group>"; };
 		F30D6539E59F26D8F9A31EA9 /* QiuEventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuEventViewController.h; sourceTree = "<group>"; };
-		F30D65CDF8C575E835AB71DC /* QiuBaiComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuBaiComment.m; sourceTree = "<group>"; };
 		F30D68593168D94AE67C17E0 /* QiuBaiAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuBaiAppDelegate.m; sourceTree = "<group>"; };
 		F30D68A9D976174289B81DC8 /* QiuBaiAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuBaiAppDelegate.h; sourceTree = "<group>"; };
 		F30D690D5F320F58AB65CF5B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F30D695EAB881877C286354D /* QiuCircleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuCircleViewController.h; sourceTree = "<group>"; };
-		F30D6A78503E22BBAA5B6B71 /* QiuBaiPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuBaiPost.h; sourceTree = "<group>"; };
 		F30D6B652F06976E813BE656 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
-		F30D6D25584E4BF96E49BF4C /* ModelStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelStore.h; sourceTree = "<group>"; };
 		F30D6DC859FA0491E27BEA90 /* QiuBai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiuBai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F30D6E21DAAF22F3C22AB32C /* SnappingTabViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnappingTabViewDataSource.h; path = customviewControllers/SnappingTabViewDataSource.h; sourceTree = "<group>"; };
 		F30D6E616BD80B8DD96A8747 /* QiuEventViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuEventViewController.m; sourceTree = "<group>"; };
@@ -135,8 +135,8 @@
 		B1A5DBBF1CABBCBE00510A86 /* customViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B163790A1CB75FA600070A39 /* QiuBaiPostDetailViewController.h */,
-				B163790B1CB75FA600070A39 /* QiuBaiPostDetailViewController.m */,
+				B1EA0B4E1CB7EEA40083410E /* QiuBaiPostDetailViewController.h */,
+				B1EA0B4F1CB7EEA40083410E /* QiuBaiPostDetailViewController.m */,
 				B1A5DBC01CABBCFA00510A86 /* SnappingTabViewController.h */,
 				B1A5DBC11CABBCFA00510A86 /* SnappingTabViewController.m */,
 				B1A5DBC51CABD11D00510A86 /* SnappingTabViewDelegate.h */,
@@ -153,12 +153,12 @@
 				B16379051CB74C9C00070A39 /* QiuBaiDataObject.m */,
 				B1F88BC21CAA6F0200093910 /* QiuBaiUser.h */,
 				B1F88BC31CAA6F0200093910 /* QiuBaiUser.m */,
-				F30D64B841211A2C0DD0B202 /* QiuBaiPost.m */,
-				F30D6A78503E22BBAA5B6B71 /* QiuBaiPost.h */,
-				F30D65CDF8C575E835AB71DC /* QiuBaiComment.m */,
-				F30D615FA2113E2B0F828390 /* QiuBaiComment.h */,
-				F30D61876B796EDF2F4A2974 /* ModelStore.m */,
-				F30D6D25584E4BF96E49BF4C /* ModelStore.h */,
+				B1EA0B451CB7EE2B0083410E /* ModelStore.h */,
+				B1EA0B461CB7EE2B0083410E /* ModelStore.m */,
+				B1EA0B471CB7EE2B0083410E /* QiuBaiComment.h */,
+				B1EA0B481CB7EE2B0083410E /* QiuBaiComment.m */,
+				B1EA0B491CB7EE2B0083410E /* QiuBaiPost.h */,
+				B1EA0B4A1CB7EE2B0083410E /* QiuBaiPost.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -293,21 +293,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1EA0B421CB7E0E90083410E /* EditCommentView.m in Sources */,
+				B1EA0B4B1CB7EE2B0083410E /* ModelStore.m in Sources */,
 				F30D6949FAC5BF583679123E /* main.m in Sources */,
 				F30D6B2D1147BB43629A0D6E /* QiuBaiAppDelegate.m in Sources */,
 				B11313B91CAD042200F883A0 /* QiuBaiPostTableView.m in Sources */,
+				B1EA0B4C1CB7EE2B0083410E /* QiuBaiComment.m in Sources */,
 				B1F88BC81CAA78A800093910 /* DataLoader.m in Sources */,
-				B163790C1CB75FA600070A39 /* QiuBaiPostDetailViewController.m in Sources */,
+				B1EA0B4D1CB7EE2B0083410E /* QiuBaiPost.m in Sources */,
 				B11313BC1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m in Sources */,
 				F30D674DEFC71FE35EBA6690 /* QiuEventViewController.m in Sources */,
 				B1F88BC41CAA6F0200093910 /* QiuBaiUser.m in Sources */,
 				F30D6D88A81BC6DFC5FC2F68 /* QiuCircleViewController.m in Sources */,
+				B1EA0B501CB7EEA40083410E /* QiuBaiPostDetailViewController.m in Sources */,
 				B16379101CB7640A00070A39 /* QiuBaiCommentTableViewCell.m in Sources */,
 				B1A5DBC31CABBCFA00510A86 /* SnappingTabViewController.m in Sources */,
-				F30D6CC7A9884720B4A592DE /* QiuBaiPost.m in Sources */,
-				F30D6B724A163030D7D05619 /* QiuBaiComment.m in Sources */,
 				B16379061CB74C9C00070A39 /* QiuBaiDataObject.m in Sources */,
-				F30D6685643820C49D21E1B0 /* ModelStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
