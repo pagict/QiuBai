@@ -105,6 +105,7 @@
                              [UIScreen mainScreen].bounds.size.width,
                              [UIScreen mainScreen].bounds.size.height - naviHeight - tabHeight);
     SnappingTabViewController *snappingTabViewController = [[SnappingTabViewController alloc] initWithFrame:rect];
+    snappingTabViewController.hidesBottomBarWhenPushed = YES;
     self.viewControllers = @[snappingTabViewController];
     snappingTabViewController.datasource = self;
 

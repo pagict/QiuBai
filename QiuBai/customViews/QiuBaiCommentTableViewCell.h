@@ -11,4 +11,6 @@
 
 @interface QiuBaiCommentTableViewCell : UITableViewCell
 - (void)setupWith:(QiuBaiComment*)comment;
+- (CGFloat)heightWith:(QiuBaiComment*)comment;
+@property (strong, nonatomic) UIFont *contentLabelFont;
 @end

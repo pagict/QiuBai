@@ -99,7 +99,8 @@
         return [cell contentLabelHeightWithPost:self.post] + [cell staticHeight];
     }
 
-    return 100;
+    QiuBaiCommentTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"QiuBaiCommentTableViewCell"];
+    return [cell heightWith:self.post.comments.allObjects[indexPath.row]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

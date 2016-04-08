@@ -9,7 +9,7 @@
 	{
 		"commentID"			: 60,
 		"commentAuthorID"	: 1,
-		"commentContent"	: "23333...",
+		"commentContent"	: "long long long long long long very long comment...",
 		"respondCommentIDs"	: [58],
 		"likeCount"			: 88
 	}
