@@ -58,12 +58,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.viewControllers[0].hidesBottomBarWhenPushed = YES;
+
     QiuBaiPost* post = self.specialOfferPosts[indexPath.section];
     CGRect cellFrame = [tableView cellForRowAtIndexPath:tableView.indexPathForSelectedRow].frame;
     QiuBaiPostDetailViewController* pdvc = [[QiuBaiPostDetailViewController alloc] initWithFrame:cellFrame];
     pdvc.post = post;
     [self pushViewController:pdvc animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    self.viewControllers[0].hidesBottomBarWhenPushed = NO;
 }
 
 
@@ -105,7 +108,6 @@
                              [UIScreen mainScreen].bounds.size.width,
                              [UIScreen mainScreen].bounds.size.height - naviHeight - tabHeight);
     SnappingTabViewController *snappingTabViewController = [[SnappingTabViewController alloc] initWithFrame:rect];
-    snappingTabViewController.hidesBottomBarWhenPushed = YES;
     self.viewControllers = @[snappingTabViewController];
     snappingTabViewController.datasource = self;
 
