@@ -62,7 +62,9 @@
 
     QiuBaiPost* post = self.specialOfferPosts[indexPath.section];
     CGRect newVCFrame = self.view.frame;
-    newVCFrame.size.height -= [self.bottomLayoutGuide length];
+    newVCFrame.size.height -= self.navigationBar.frame.size.height;
+    newVCFrame.size.height -= [self.topLayoutGuide length];
+//    newVCFrame.s
     QiuBaiPostDetailViewController* pdvc = [[QiuBaiPostDetailViewController alloc] initWithFrame:newVCFrame];
     pdvc.post = post;
     [self pushViewController:pdvc animated:YES];

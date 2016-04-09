@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "QiuBaiPost.h"
-@interface QiuBaiPostDetailViewController : UITableViewController
+@interface QiuBaiPostDetailViewController : UIViewController
 - (instancetype)initWithFrame:(CGRect)frame;
 
 @property (strong, nonatomic) QiuBaiPost* post;

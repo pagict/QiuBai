@@ -10,26 +10,44 @@
 #import "QiuBaiPostTableViewCell.h"
 #import "QiuBaiCommentTableViewCell.h"
 #import "QiuBaiTablikeSwitch.h"
+#import "EditCommentView.h"
 
-@interface QiuBaiPostDetailViewController ()
+@interface QiuBaiPostDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic)   IBOutlet    QiuBaiTablikeSwitch* commentTypeSwitch;
 @property (strong, nonatomic)   NSArray*    allComments;
 @property (strong, nonatomic)   NSArray*    hotComments;
 
 @property (strong, nonatomic)   NSArray*    displayComments;
+@property (nonatomic)           CGFloat     editCommentViewHeight;
+@property (strong, nonatomic)   IBOutlet    EditCommentView*    editCommentView;
+@property (strong, nonatomic)   IBOutlet    UITableView*    tableView;
 @end
 
 @implementation QiuBaiPostDetailViewController
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithStyle:UITableViewStyleGrouped];
+    self = [super init];
     if (self) {
+        self.editCommentViewHeight = 44.0;
+        CGRect editViewFrame = CGRectMake(0,
+                                          frame.size.height - self.editCommentViewHeight,
+                                          frame.size.width,
+                                          self.editCommentViewHeight);
+        self.editCommentView = [[EditCommentView alloc] initWithFrame:editViewFrame];
+        [self.view addSubview:self.editCommentView];
+        frame.origin.x = frame.origin.y = 0;
+        frame.size.height = frame.size.height - self.editCommentViewHeight;
+        self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
         self.tableView.tableHeaderView = nil;
         self.automaticallyAdjustsScrollViewInsets = NO;
         [self.tableView registerNib:[UINib nibWithNibName:@"QiuBaiPostTableViewCell" bundle:nil]
              forCellReuseIdentifier:@"QiuBaiPostTableViewCell"];
         [self.tableView registerNib:[UINib nibWithNibName:@"QiuBaiCommentTableViewCell" bundle:nil]
              forCellReuseIdentifier:@"QiuBaiCommentTableViewCell"];
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+
+        [self.view addSubview:self.tableView];
     }
     return self;
 }
@@ -84,6 +102,9 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (!self.displayComments || self.displayComments.count==0) {
+        return 1;
+    }
     return 2;
 }
 
@@ -119,7 +140,10 @@
     } else {
         self.displayComments = self.allComments;
     }
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+    if (self.displayComments.count) {
+//        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadData];
+    }
 }
 
 - (NSArray*)allComments {
