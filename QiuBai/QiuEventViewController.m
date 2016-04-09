@@ -61,8 +61,9 @@
     self.viewControllers[0].hidesBottomBarWhenPushed = YES;
 
     QiuBaiPost* post = self.specialOfferPosts[indexPath.section];
-    CGRect cellFrame = [tableView cellForRowAtIndexPath:tableView.indexPathForSelectedRow].frame;
-    QiuBaiPostDetailViewController* pdvc = [[QiuBaiPostDetailViewController alloc] initWithFrame:cellFrame];
+    CGRect newVCFrame = self.view.frame;
+    newVCFrame.size.height -= [self.bottomLayoutGuide length];
+    QiuBaiPostDetailViewController* pdvc = [[QiuBaiPostDetailViewController alloc] initWithFrame:newVCFrame];
     pdvc.post = post;
     [self pushViewController:pdvc animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

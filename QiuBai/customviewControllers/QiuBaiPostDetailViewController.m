@@ -9,36 +9,27 @@
 #import "QiuBaiPostDetailViewController.h"
 #import "QiuBaiPostTableViewCell.h"
 #import "QiuBaiCommentTableViewCell.h"
+#import "QiuBaiTablikeSwitch.h"
 
-@interface QiuBaiPostDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
-@property (strong, nonatomic) IBOutlet UITableView* postTableView;
-@property (strong, nonatomic) IBOutlet UIView* commentsView;
+@interface QiuBaiPostDetailViewController ()
+@property (strong, nonatomic)   IBOutlet    QiuBaiTablikeSwitch* commentTypeSwitch;
+@property (strong, nonatomic)   NSArray*    allComments;
+@property (strong, nonatomic)   NSArray*    hotComments;
+
+@property (strong, nonatomic)   NSArray*    displayComments;
 @end
 
 @implementation QiuBaiPostDetailViewController
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    self = [super init];
+    self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
+        self.tableView.tableHeaderView = nil;
         self.automaticallyAdjustsScrollViewInsets = NO;
-
-        frame.origin.x = frame.origin.y = 0;
-        self.postTableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
-        [self.postTableView registerNib:[UINib nibWithNibName:@"QiuBaiPostTableViewCell" bundle:nil]
-                 forCellReuseIdentifier:@"QiuBaiPostTableViewCell"];
-        self.postTableView.dataSource = self;
-        self.postTableView.delegate = self;
-        self.postTableView.bounces = NO;
-        self.postTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        self.postTableView.bouncesZoom = NO;
-
-        [self.view addSubview:self.postTableView];
-
-        CGRect restFrame = self.view.frame;
-        restFrame.origin.y = frame.size.height;
-        restFrame.size.height -= frame.size.height;
-        self.commentsView = [[UIView alloc] initWithFrame:restFrame];
-        [self.view addSubview:self.commentsView];
+        [self.tableView registerNib:[UINib nibWithNibName:@"QiuBaiPostTableViewCell" bundle:nil]
+             forCellReuseIdentifier:@"QiuBaiPostTableViewCell"];
+        [self.tableView registerNib:[UINib nibWithNibName:@"QiuBaiCommentTableViewCell" bundle:nil]
+             forCellReuseIdentifier:@"QiuBaiCommentTableViewCell"];
     }
     return self;
 }
@@ -56,31 +47,20 @@
 - (void)setPost:(QiuBaiPost *)post {
     _post = post;
     self.navigationItem.title = [NSString stringWithFormat:@"糗事%llu", post.postID];
-    CGRect allCommentsTableViewFrame = self.commentsView.frame;
-    allCommentsTableViewFrame.origin.x = allCommentsTableViewFrame.origin.y = 0;
-    UITableView* allCommentsTableView = [[UITableView alloc] initWithFrame:allCommentsTableViewFrame];
-    [allCommentsTableView registerNib:[UINib nibWithNibName:@"QiuBaiCommentTableViewCell" bundle:nil]
-               forCellReuseIdentifier:@"QiuBaiCommentTableViewCell"];
-    allCommentsTableView.dataSource = self;
-    allCommentsTableView.delegate = self;
-    allCommentsTableView.bounces = NO;
-    [self.commentsView addSubview:allCommentsTableView];
-
-    [allCommentsTableView reloadData];
-    [self.postTableView reloadData];
+    [self commentTypeChanged:nil];
 }
 
 
 #pragma mark - UITableView Data Source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView == self.postTableView) {
+    if (section == 0) {
         return 1;
     }
-    return self.post.comments.count;
+    return self.displayComments.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.postTableView) {
+    if (indexPath.section == 0) {
         QiuBaiPostTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"QiuBaiPostTableViewCell"];
         [cell setUpWith:self.post];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -88,24 +68,66 @@
     }
 
     QiuBaiCommentTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"QiuBaiCommentTableViewCell"];
-    [cell setupWith:[self.post.comments.allObjects objectAtIndex:indexPath.row]];
+    [cell setupWith:[self.displayComments objectAtIndex:indexPath.row]];
     return cell;
 }
 
 #pragma mark - UITableView Delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.postTableView) {
+    if (indexPath.section == 0) {
         QiuBaiPostTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"QiuBaiPostTableViewCell"];
         return [cell contentLabelHeightWithPost:self.post] + [cell staticHeight];
     }
 
     QiuBaiCommentTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"QiuBaiCommentTableViewCell"];
-    return [cell heightWith:self.post.comments.allObjects[indexPath.row]];
+    return [cell heightWith:self.displayComments[indexPath.row]];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 1) {
+        return self.commentTypeSwitch;
+    }
+    return nil;
+}
+
+#pragma mark - lazy init
+- (QiuBaiTablikeSwitch*)commentTypeSwitch {
+    if (!_commentTypeSwitch) {
+        _commentTypeSwitch = [[QiuBaiTablikeSwitch alloc] init];
+        _commentTypeSwitch.titleWhenOn = @"热门";
+        _commentTypeSwitch.titleWhenOff = @"全部";
+        [_commentTypeSwitch addTarget:self
+                               action:@selector(commentTypeChanged:)
+                     forControlEvents:UIControlEventValueChanged];
+    }
+    return _commentTypeSwitch;
 }
 
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+}
+
+#pragma mark - 
+- (IBAction)commentTypeChanged:(id)sender {
+    if (self.commentTypeSwitch.isOn) {
+        self.displayComments = self.hotComments;
+    } else {
+        self.displayComments = self.allComments;
+    }
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (NSArray*)allComments {
+    return self.post.comments.allObjects;
+}
+
+- (NSArray*)hotComments {
+    return self.post.comments.allObjects;
 }
 /*
 #pragma mark - Navigation

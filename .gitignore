@@ -20,3 +20,9 @@ DerivedData
 .idea/
 # Pods - for those of you who use CocoaPods
 Pods
+
+
+#Test data
+QiuBai/models/backend/comments.json
+QiuBai/models/backend/posts.json
+QiuBai/models/backend/users.json

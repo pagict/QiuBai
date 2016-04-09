@@ -12,5 +12,12 @@
 		"commentContent"	: "long long long long long long very long comment...",
 		"respondCommentIDs"	: [58],
 		"likeCount"			: 88
-	}
+	},
+	{
+			"commentID"			: 78,
+			"commentAuthorID"	: 3,
+			"commentContent"	: "我是中文长评论，不知道在屏幕上显示的效果怎么样呢",
+			"respondCommentIDs"	: [58],
+			"likeCount"			: 8
+		}
 ]
