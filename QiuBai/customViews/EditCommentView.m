@@ -26,7 +26,7 @@ CGFloat commentButtonWidth = 50;
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        self.backgroundColor = [UIColor clearColor];
         self.topMargin = (frame.size.height - buttonHeight) / 2;
         self.textViewFont = [UIFont systemFontOfSize:17];
 
@@ -47,6 +47,7 @@ CGFloat commentButtonWidth = 50;
         CGFloat sizeWidth = frame.size.width - originX - self.commentButton.frame.size.width - widgetHorizontalGap;
         CGRect editFrame = CGRectMake(originX, self.topMargin, sizeWidth, 30);
         self.editingTextView = [[UITextView alloc] initWithFrame:editFrame];
+        self.editingTextView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         self.editingTextView.layer.cornerRadius = 5.0;
         self.editingTextView.font = self.textViewFont;
         self.editingTextView.delegate = self;

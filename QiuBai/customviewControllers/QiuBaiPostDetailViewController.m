@@ -46,6 +46,7 @@
                                           frame.size.width,
                                           self.editCommentViewHeight);
         self.editCommentView = [[EditCommentView alloc] initWithFrame:editViewFrame];
+        self.editCommentView.backgroundColor = [UIColor whiteColor];
 //        self.editCommentView.delegate = self;
         [self.view addSubview:self.editCommentView];
         frame.origin.x = frame.origin.y = 0;
@@ -100,6 +101,7 @@
 
     QiuBaiCommentTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"QiuBaiCommentTableViewCell"];
     [cell setupWith:[self.displayComments objectAtIndex:indexPath.row]];
+    cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
     return cell;
 }
 
@@ -166,7 +168,7 @@
 //    }
     [self.editCommentView addObserver:self
            forKeyPath:@"frame"
-              options:NSKeyValueObservingOptionNew
+              options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
               context:NULL];
 }
 
@@ -180,7 +182,15 @@
                        context:(void *)context {
     if ([keyPath isEqualToString:@"frame"]) {
         NSValue* frameObject = change[@"new"];
+        NSValue* oldFrame = change[@"old"];
         [(UIScrollView*)self.view scrollRectToVisible:frameObject.CGRectValue animated:YES];
+        CGRect newTableViewFrame = self.tableView.frame;
+        newTableViewFrame.size.height = oldFrame.CGRectValue.size.height + self.tableView.frame.size.height - frameObject.CGRectValue.size.height;
+
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.tableView.frame = newTableViewFrame;
+                         }];
     }
 }
 
