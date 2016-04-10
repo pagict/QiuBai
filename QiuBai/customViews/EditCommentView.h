@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditCommentView : UIView
+@protocol EditCommentViewDelegate <UITextViewDelegate>
+@required
+//@property (strong, nonatomic) NSAttributedString* commentContent;
+@end
 
+@interface EditCommentView : UIView
+@property (weak, nonatomic) id<EditCommentViewDelegate> delegate;
 @end

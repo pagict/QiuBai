@@ -12,7 +12,7 @@
 #import "QiuBaiTablikeSwitch.h"
 #import "EditCommentView.h"
 
-@interface QiuBaiPostDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface QiuBaiPostDetailViewController ()<UITableViewDelegate, UITableViewDataSource, EditCommentViewDelegate>
 @property (strong, nonatomic)   IBOutlet    QiuBaiTablikeSwitch* commentTypeSwitch;
 @property (strong, nonatomic)   NSArray*    allComments;
 @property (strong, nonatomic)   NSArray*    hotComments;
@@ -29,11 +29,24 @@
     self = [super init];
     if (self) {
         self.editCommentViewHeight = 44.0;
+        self.view = [[UIScrollView alloc] initWithFrame:frame];
+        ((UIScrollView*)self.view).contentSize = frame.size;
+
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardDidShown:)
+                                                     name:UIKeyboardDidShowNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardDidHide:)
+                                                     name:UIKeyboardDidHideNotification
+                                                   object:nil];
+
         CGRect editViewFrame = CGRectMake(0,
                                           frame.size.height - self.editCommentViewHeight,
                                           frame.size.width,
                                           self.editCommentViewHeight);
         self.editCommentView = [[EditCommentView alloc] initWithFrame:editViewFrame];
+//        self.editCommentView.delegate = self;
         [self.view addSubview:self.editCommentView];
         frame.origin.x = frame.origin.y = 0;
         frame.size.height = frame.size.height - self.editCommentViewHeight;
@@ -126,6 +139,49 @@
                      forControlEvents:UIControlEventValueChanged];
     }
     return _commentTypeSwitch;
+}
+
+
+//#pragma mark - UITextView delegate
+//- (void)textViewDidBeginEditing:(UITextView *)textView {
+//    CGRect frame = self.editCommentView.frame;
+////    frame.origin.y -= 432;
+//    [(UIScrollView*)self.view scrollRectToVisible:frame animated:YES];
+//}
+- (void)keyboardDidShown:(NSNotification*)aNotification {
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    ((UIScrollView*)self.view).contentInset = contentInsets;
+    ((UIScrollView*)self.view).scrollIndicatorInsets = contentInsets;
+
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your app might not need or want this behavior.
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    UIView* activeField = self.editCommentView;
+//    if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
+        [(UIScrollView*)self.view scrollRectToVisible:activeField.frame animated:YES];
+//    }
+    [self.editCommentView addObserver:self
+           forKeyPath:@"frame"
+              options:NSKeyValueObservingOptionNew
+              context:NULL];
+}
+
+- (void)keyboardDidHide:(NSNotification*)aNotification {
+    [self.editCommentView removeObserver:self forKeyPath:@"frame"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSString *,id> *)change
+                       context:(void *)context {
+    if ([keyPath isEqualToString:@"frame"]) {
+        NSValue* frameObject = change[@"new"];
+        [(UIScrollView*)self.view scrollRectToVisible:frameObject.CGRectValue animated:YES];
+    }
 }
 
 
