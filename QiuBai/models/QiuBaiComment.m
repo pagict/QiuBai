@@ -30,4 +30,11 @@
     return _respondComments;
 }
 
+- (NSMutableArray*)respondCommentIDs {
+    if (!_respondCommentIDs) {
+        _respondCommentIDs = [[NSMutableArray alloc] init];
+    }
+    return _respondCommentIDs;
+}
+
 @end

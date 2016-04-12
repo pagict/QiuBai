@@ -25,4 +25,6 @@
 - (void)insertComment:(QiuBaiComment *)comment;
 - (QiuBaiComment *)commentWithID:(u_int64_t)commentId;
 - (void)deleteCommentWithID:(u_int64_t)commentId;
+
+- (QiuBaiComment*)newCommentWithContent:(NSString*)commentContent;
 @end

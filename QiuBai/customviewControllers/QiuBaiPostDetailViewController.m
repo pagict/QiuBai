@@ -11,6 +11,7 @@
 #import "QiuBaiCommentTableViewCell.h"
 #import "QiuBaiTablikeSwitch.h"
 #import "EditCommentView.h"
+#import "ModelStore.h"
 
 @interface QiuBaiPostDetailViewController ()<UITableViewDelegate, UITableViewDataSource, EditCommentViewDelegate>
 @property (strong, nonatomic)   IBOutlet    QiuBaiTablikeSwitch* commentTypeSwitch;
@@ -47,7 +48,7 @@
                                           self.editCommentViewHeight);
         self.editCommentView = [[EditCommentView alloc] initWithFrame:editViewFrame];
         self.editCommentView.backgroundColor = [UIColor whiteColor];
-//        self.editCommentView.delegate = self;
+        self.editCommentView.delegate = self;
         [self.view addSubview:self.editCommentView];
         frame.origin.x = frame.origin.y = 0;
         frame.size.height = frame.size.height - self.editCommentViewHeight;
@@ -130,6 +131,35 @@
     return nil;
 }
 
+#pragma mark - Edit Comment View delegate
+- (void)didFinishedCommentEditing:(UITextView *)textView {
+    [textView resignFirstResponder];
+
+    NSString* commentContent = textView.text;
+    NSIndexPath* newIndexPath = nil;
+    if (commentContent && (![commentContent isEqualToString:@""])) {
+
+        textView.text = nil;
+        QiuBaiComment* newComment = [[ModelStore sharedStore] newCommentWithContent:commentContent];
+        [self.post.comments insertObject:newComment atIndex:self.post.comments.count];
+        [self.post.commentIDs addObject:[NSNumber numberWithUnsignedLongLong:newComment.commentID]];
+        [self.tableView beginUpdates];
+        newIndexPath = [NSIndexPath indexPathForRow:self.displayComments.count-1 inSection:1];
+        [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView endUpdates];
+        [self.tableView reloadData];
+    }
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         [self.tableView scrollToRowAtIndexPath:newIndexPath
+                                               atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+
+                         UIScrollView* scrollView = (UIScrollView*)self.view;
+                         scrollView.contentInset = UIEdgeInsetsZero;
+                         scrollView.scrollIndicatorInsets = UIEdgeInsetsZero;
+                     }];
+}
+
 #pragma mark - lazy init
 - (QiuBaiTablikeSwitch*)commentTypeSwitch {
     if (!_commentTypeSwitch) {
@@ -151,6 +181,7 @@
 //    [(UIScrollView*)self.view scrollRectToVisible:frame animated:YES];
 //}
 - (void)keyboardDidShown:(NSNotification*)aNotification {
+    
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
 
@@ -163,13 +194,14 @@
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
     UIView* activeField = self.editCommentView;
-//    if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
+    if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
         [(UIScrollView*)self.view scrollRectToVisible:activeField.frame animated:YES];
-//    }
+    }
+
     [self.editCommentView addObserver:self
-           forKeyPath:@"frame"
-              options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-              context:NULL];
+                           forKeyPath:@"frame"
+                              options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                              context:NULL];
 }
 
 - (void)keyboardDidHide:(NSNotification*)aNotification {
@@ -213,11 +245,11 @@
 }
 
 - (NSArray*)allComments {
-    return self.post.comments.allObjects;
+    return self.post.comments;
 }
 
 - (NSArray*)hotComments {
-    return self.post.comments.allObjects;
+    return self.post.comments;
 }
 /*
 #pragma mark - Navigation
@@ -228,5 +260,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (void)viewWillDisappear:(BOOL)animated {
+    @try {
+        [self.editCommentView removeObserver:self forKeyPath:@"frame"];
+    } @catch (NSException *exception) {
+        // removed observer before
+    } 
+}
 
 @end

@@ -17,7 +17,7 @@
 @property (nonatomic)                   u_int64_t       dislikeCount;
 @property (nonatomic)                   u_int64_t       sharedCount;
 @property (strong, nonatomic)           NSMutableArray  *commentIDs;
-@property (strong, nonatomic)           NSMutableSet    *comments;
+@property (strong, nonatomic)           NSMutableArray  *comments;
 
 @property (nonatomic, getter=isHot)     BOOL            hot;
 @property (nonatomic, getter=isNew)     BOOL            newPost;

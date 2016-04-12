@@ -12,6 +12,10 @@
 @property (strong, nonatomic) NSMutableSet *userStore;
 @property (strong, nonatomic) NSMutableSet *postStore;
 @property (strong, nonatomic) NSMutableSet *commentStore;
+
+@property (nonatomic) u_int64_t nextCommentID;
+@property (nonatomic) u_int64_t nextPostID;
+@property (strong, nonatomic) QiuBaiUser* currentUser;
 @end
 
 
@@ -147,5 +151,36 @@
 
 - (NSArray*)allPosts {
     return [_postStore allObjects];
+}
+
+- (QiuBaiComment*)newCommentWithContent:(NSString *)commentContent {
+    QiuBaiComment* newComment = [[QiuBaiComment alloc] init];
+    newComment.commentID = self.nextCommentID++;
+    newComment.commentAuthor = self.currentUser;
+    newComment.commentContent = commentContent;
+    newComment.respondComments = nil;
+    newComment.respondCommentIDs = nil;
+    newComment.likeCount = 0;
+
+    [[ModelStore sharedStore] insertComment:newComment];
+    return newComment;
+}
+
+- (QiuBaiPost*)newPost {
+    QiuBaiPost* newPost = [[QiuBaiPost alloc] init];
+    newPost.postID = self.nextPostID++;
+    newPost.postAuthorID = self.currentUser.userID;
+    newPost.postAuthor = self.currentUser;
+    newPost.postDate = [NSDate date];
+    newPost.likeCount = 0;
+    newPost.dislikeCount = 0;
+    newPost.sharedCount = 0;
+    newPost.commentIDs = nil;
+    newPost.comments = nil;
+    newPost.hot = NO;
+    newPost.newPost = YES;
+
+    [[ModelStore sharedStore] insertPost:newPost];
+    return newPost;
 }
 @end

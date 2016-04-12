@@ -28,15 +28,22 @@
         self.postAuthorID = ((NSNumber *)[attributeDictionary objectForKey:@"postAuthorID"]).unsignedLongLongValue;
         self.postAuthor = [[ModelStore sharedStore] userWithID:self.postAuthorID];
 
-        self.commentIDs = [attributeDictionary objectForKey:@"commentIDs"];
+        [self.commentIDs addObjectsFromArray:[attributeDictionary objectForKey:@"commentIDs"]];
     }
     return self;
 }
 
-- (NSMutableSet*)comments {
+- (NSMutableArray*)comments {
     if (!_comments) {
-        _comments = [[NSMutableSet alloc] init];
+        _comments = [[NSMutableArray alloc] init];
     }
     return _comments;
+}
+
+- (NSMutableArray*)commentIDs {
+    if (!_commentIDs) {
+        _commentIDs = [[NSMutableArray alloc] init];
+    }
+    return _commentIDs;
 }
 @end

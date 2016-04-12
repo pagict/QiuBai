@@ -11,6 +11,7 @@
 @protocol EditCommentViewDelegate <UITextViewDelegate>
 @required
 //@property (strong, nonatomic) NSAttributedString* commentContent;
+- (void)didFinishedCommentEditing:(UITextView*)textView;
 @end
 
 @interface EditCommentView : UIView

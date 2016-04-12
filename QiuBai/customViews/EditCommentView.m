@@ -41,6 +41,9 @@ CGFloat commentButtonWidth = 50;
         self.commentButton = [[UIButton alloc] initWithFrame:commentButtonFrame];
         [self.commentButton setTitle:@"评论" forState:UIControlStateNormal];
         [self.commentButton setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+        [self.commentButton addTarget:self
+                               action:@selector(sendComment:)
+                     forControlEvents:UIControlEventTouchUpInside];
 
 
         originX = emojiFrame.origin.x + emojiFrame.size.width + widgetHorizontalGap;
@@ -90,4 +93,9 @@ CGFloat commentButtonWidth = 50;
     }
 }
 
+- (IBAction)sendComment:(id)sender {
+    if (self.delegate) {
+        [self.delegate didFinishedCommentEditing:self.editingTextView];
+    }
+}
 @end
