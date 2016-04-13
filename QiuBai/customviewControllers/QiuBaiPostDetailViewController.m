@@ -41,6 +41,10 @@
                                                  selector:@selector(keyboardDidHide:)
                                                      name:UIKeyboardDidHideNotification
                                                    object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardDidShown:)
+                                                     name:UIKeyboardDidChangeFrameNotification
+                                                    object:nil];
 
         CGRect editViewFrame = CGRectMake(0,
                                           frame.size.height - self.editCommentViewHeight,
@@ -97,6 +101,9 @@
         QiuBaiPostTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"QiuBaiPostTableViewCell"];
         [cell setUpWith:self.post];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell.addCommentButton addTarget:self
+                                  action:@selector(tapAddCommentButton:)
+                        forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
 
@@ -179,7 +186,13 @@
 - (void)keyboardDidShown:(NSNotification*)aNotification {
     
     NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGRect kbRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+
+    if (! CGRectContainsPoint(self.view.frame, kbRect.origin)) {
+        return;
+    }
+    CGSize kbSize = kbRect.size;
+
 
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
     ((UIScrollView*)self.view).contentInset = contentInsets;
@@ -194,14 +207,20 @@
         [(UIScrollView*)self.view scrollRectToVisible:activeField.frame animated:YES];
     }
 
-    [self.editCommentView addObserver:self
-                           forKeyPath:@"frame"
-                              options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                              context:NULL];
+    if (!self.editCommentView.observationInfo) {
+        [self.editCommentView addObserver:self
+                               forKeyPath:@"frame"
+                                  options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                                  context:NULL];
+    }
 }
 
 - (void)keyboardDidHide:(NSNotification*)aNotification {
-    [self.editCommentView removeObserver:self forKeyPath:@"frame"];
+    @try {
+        [self.editCommentView removeObserver:self forKeyPath:@"frame"];
+    } @catch (NSException *exception) {
+        // removed observer before
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -247,6 +266,10 @@
 - (NSArray*)hotComments {
     return self.post.comments;
 }
+
+- (IBAction)tapAddCommentButton:(id)sender {
+    [self.editCommentView beginEditComment];
+}
 /*
 #pragma mark - Navigation
 
@@ -257,10 +280,12 @@
 }
 */
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     @try {
         [self.editCommentView removeObserver:self forKeyPath:@"frame"];
     } @catch (NSException *exception) {
         // removed observer before
+        NSLog(@"it is not registered as an observer!");
     } 
 }
 

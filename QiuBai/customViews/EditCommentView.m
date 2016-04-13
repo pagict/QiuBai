@@ -93,6 +93,10 @@ CGFloat commentButtonWidth = 50;
     }
 }
 
+- (void)beginEditComment {
+    [self.editingTextView becomeFirstResponder];
+}
+
 - (IBAction)sendComment:(id)sender {
     if (self.delegate) {
         [self.delegate didFinishedCommentEditing:self.editingTextView];

@@ -16,4 +16,6 @@
 
 @interface EditCommentView : UIView
 @property (weak, nonatomic) id<EditCommentViewDelegate> delegate;
+
+- (void)beginEditComment;
 @end
