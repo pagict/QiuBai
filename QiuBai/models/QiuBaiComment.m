@@ -18,14 +18,14 @@
      u_int64_t authorID = ((NSNumber *)[dictionary objectForKey:@"commentAuthorID"]).unsignedLongLongValue;
      self.commentAuthor = [[ModelStore sharedStore] userWithID:authorID];
 
-     self.respondCommentIDs = [dictionary objectForKey:@"respondCommentIDs"];
+     [self.respondCommentIDs addObjectsFromArray:[dictionary objectForKey:@"respondCommentIDs"]];
  }
  return self;
 }
 
-- (NSMutableSet*)respondComments {
+- (NSMutableArray*)respondComments {
     if (!_respondComments) {
-        _respondComments = [[NSMutableSet alloc] init];
+        _respondComments = [[NSMutableArray alloc] init];
     }
     return _respondComments;
 }

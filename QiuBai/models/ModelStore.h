@@ -27,4 +27,7 @@
 - (void)deleteCommentWithID:(u_int64_t)commentId;
 
 - (QiuBaiComment*)newCommentWithContent:(NSString*)commentContent;
+- (QiuBaiPost*)newPostWithContent:(NSString*)postText;
+- (void)addComment:(QiuBaiComment*)comment toPost:(QiuBaiPost*)post;
+- (void)responseComment:(QiuBaiComment*)toComment withComment:(QiuBaiComment*)attachingComment;
 @end

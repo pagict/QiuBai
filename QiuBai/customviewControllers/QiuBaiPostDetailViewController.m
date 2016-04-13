@@ -141,13 +141,9 @@
 
         textView.text = nil;
         QiuBaiComment* newComment = [[ModelStore sharedStore] newCommentWithContent:commentContent];
-        [self.post.comments insertObject:newComment atIndex:self.post.comments.count];
-        [self.post.commentIDs addObject:[NSNumber numberWithUnsignedLongLong:newComment.commentID]];
-        [self.tableView beginUpdates];
-        newIndexPath = [NSIndexPath indexPathForRow:self.displayComments.count-1 inSection:1];
-        [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self.tableView endUpdates];
+        [[ModelStore sharedStore] addComment:newComment toPost:self.post];
         [self.tableView reloadData];
+        newIndexPath = [NSIndexPath indexPathForRow:self.displayComments.count-1 inSection:1];
     }
     [UIView animateWithDuration:0.3
                      animations:^{

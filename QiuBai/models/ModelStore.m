@@ -166,12 +166,13 @@
     return newComment;
 }
 
-- (QiuBaiPost*)newPost {
+- (QiuBaiPost*)newPostWithContent:(NSString *)postText {
     QiuBaiPost* newPost = [[QiuBaiPost alloc] init];
     newPost.postID = self.nextPostID++;
     newPost.postAuthorID = self.currentUser.userID;
     newPost.postAuthor = self.currentUser;
     newPost.postDate = [NSDate date];
+    newPost.postContent = postText;
     newPost.likeCount = 0;
     newPost.dislikeCount = 0;
     newPost.sharedCount = 0;
@@ -182,5 +183,16 @@
 
     [[ModelStore sharedStore] insertPost:newPost];
     return newPost;
+}
+
+- (void)addComment:(QiuBaiComment *)comment toPost:(QiuBaiPost *)post {
+    [post.comments insertObject:comment atIndex:post.comments.count];
+    [post.commentIDs insertObject:[NSNumber numberWithUnsignedLongLong:comment.commentID] atIndex:post.commentIDs.count];
+}
+
+- (void)responseComment:(QiuBaiComment *)toComment withComment:(QiuBaiComment *)attachingComment {
+    [toComment.respondComments insertObject:attachingComment atIndex:toComment.respondComments.count];
+    [toComment.respondCommentIDs insertObject:[NSNumber numberWithUnsignedLongLong:attachingComment.commentID]
+                                      atIndex:toComment.respondCommentIDs.count];
 }
 @end

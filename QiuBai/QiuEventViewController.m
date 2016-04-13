@@ -18,7 +18,7 @@
 #import "QiuBaiUser.h"
 
 
-@interface QiuEventViewController ()<SnappingTabViewDataSource, UITableViewDataSource, UITableViewDelegate>
+@interface QiuEventViewController ()<SnappingTabViewDataSource, SnappingTabViewDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSMutableArray* subViews;
 @property (strong, nonatomic) NSArray*  specialOfferPosts;
 @end
@@ -90,6 +90,11 @@
     return @[@"tab1", @"long--tab--name"];
 }
 
+#pragma mark - SnappingTabView Delegate
+- (void)updateView:(UIView *)view {
+    [(UITableView*)view reloadData];
+}
+
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -112,7 +117,9 @@
                              [UIScreen mainScreen].bounds.size.height - naviHeight - tabHeight);
     SnappingTabViewController *snappingTabViewController = [[SnappingTabViewController alloc] initWithFrame:rect];
     self.viewControllers = @[snappingTabViewController];
+    self.subViews = [[NSMutableArray alloc] init];
     snappingTabViewController.datasource = self;
+    snappingTabViewController.delegate = self;
 
 }
 

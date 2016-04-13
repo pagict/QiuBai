@@ -12,7 +12,7 @@
 @protocol SnappingTabViewDelegate <NSObject>
 
 @required
-
+- (void)updateView:(UIView*)view;
 @optional
 - (void)snappingTabViewController:(SnappingTabViewController*)scroll didScrollToViewAtIndex:(NSInteger)subPageIndex;
 @end

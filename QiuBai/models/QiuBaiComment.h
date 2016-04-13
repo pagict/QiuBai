@@ -11,7 +11,7 @@
 @property (strong, nonatomic)   QiuBaiUser *    commentAuthor;
 @property (strong, nonatomic)   NSString *      commentContent;
 @property (strong, nonatomic)   NSMutableArray  *respondCommentIDs;
-@property (strong, nonatomic)   NSMutableSet    *respondComments;
+@property (strong, nonatomic)   NSMutableArray  *respondComments;
 @property (nonatomic)           u_int64_t       likeCount;
 
 - (instancetype)initWithJSONDictionary:(NSDictionary *)dictionary;

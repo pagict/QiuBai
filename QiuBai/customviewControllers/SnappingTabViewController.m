@@ -12,6 +12,8 @@
 @property (strong, nonatomic) IBOutlet UIStackView *tabTitlesView;
 @property (strong, nonatomic) IBOutlet UIView* indicatorView;
 @property (strong, nonatomic) IBOutlet UIScrollView* scrollView;
+
+@property (strong, nonatomic) NSArray<UIView*>* subViews;
 @end
 
 @implementation SnappingTabViewController
@@ -70,8 +72,8 @@
     NSArray<NSString*>* titles = [datasource titlesInSnappingTabViewController:self];
     [self setupTitleBar:titles];
 
-    NSArray<UIView*>* tabViews = [datasource viewsInSnappingTabViewController:self];
-    [self setupScrollViewBy:tabViews];
+    self.subViews =  [NSArray arrayWithArray:[datasource viewsInSnappingTabViewController:self]];
+    [self setupScrollViewBy:self.subViews];
 }
 
 - (void)setupTitleBar:(NSArray<NSString*>*)titles {
@@ -108,6 +110,16 @@
     [super viewDidLoad];
 
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    if (self.delegate) {
+        for (UIView* view in self.subViews) {
+            [self.delegate updateView:view];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
