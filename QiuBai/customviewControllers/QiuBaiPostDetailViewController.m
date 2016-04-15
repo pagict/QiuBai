@@ -147,6 +147,7 @@
     if (commentContent && (![commentContent isEqualToString:@""])) {
 
         textView.text = nil;
+        [self.editCommentView performSelector:@selector(textViewDidChange:) withObject:self.editCommentView.editingTextView];
         QiuBaiComment* newComment = [[ModelStore sharedStore] newCommentWithContent:commentContent];
         [[ModelStore sharedStore] addComment:newComment toPost:self.post];
         [self.tableView reloadData];

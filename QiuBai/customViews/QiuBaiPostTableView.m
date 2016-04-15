@@ -20,10 +20,6 @@
         UINib* cellNib = [UINib nibWithNibName:@"QiuBaiPostTableViewCell" bundle:nil];
         [self registerNib:cellNib forCellReuseIdentifier:@"QiuBaiPostTableViewCell"];
         self.delegate = self;
-
-        //test
-        self.layer.borderColor = [UIColor yellowColor].CGColor;
-        self.layer.borderWidth = 2.0;
     }
     return self;
 }

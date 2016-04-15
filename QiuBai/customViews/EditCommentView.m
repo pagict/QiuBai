@@ -9,9 +9,6 @@
 #import "EditCommentView.h"
 
 @interface EditCommentView ()<UITextViewDelegate>
-@property (strong, nonatomic) IBOutlet UIButton* emojiButton;
-@property (strong, nonatomic) IBOutlet UITextView* editingTextView;
-@property (strong, nonatomic) IBOutlet UIButton* commentButton;
 @property (strong, nonatomic) UIFont*   textViewFont;
 @property (nonatomic)       CGFloat topMargin;
 @end
@@ -96,6 +93,7 @@ CGFloat commentButtonWidth = 50;
 - (void)beginEditComment {
     [self.editingTextView becomeFirstResponder];
 }
+
 
 - (IBAction)sendComment:(id)sender {
     if (self.delegate) {

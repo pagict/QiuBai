@@ -13,6 +13,7 @@
 #import "customViews/QiuBaiPostTableView.h"
 #import "customViews/QiuBaiPostTableViewCell.h"
 #import "QiuBaiPostDetailViewController.h"
+#import "QiuBaiNewPostViewController.h"
 #import "ModelStore.h"
 #import "QiuBaiPost.h"
 #import "QiuBaiUser.h"
@@ -121,11 +122,42 @@
     snappingTabViewController.datasource = self;
     snappingTabViewController.delegate = self;
 
+
+    UIBarButtonItem* leftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+                                                                                       target:self
+                                                                                       action:@selector(invegestigate:)];
+
+    UIBarButtonItem* rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                    target:self
+                                                                                    action:@selector(toPostNew:)];
+    self.topViewController.navigationItem.title = @"糗事百科";
+    self.topViewController.navigationItem.leftBarButtonItem = leftBarButton;
+    self.topViewController.navigationItem.rightBarButtonItem = rightBarButton;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)invegestigate:(id)sender {
+
+}
+- (IBAction)toPostNew:(id)sender {
+
+    CGRect newVCFrame = self.view.frame;
+    newVCFrame.origin.y += self.navigationBar.frame.size.height;
+    newVCFrame.origin.y += [UIApplication sharedApplication].statusBarFrame.size.height;
+    newVCFrame.size.height -= newVCFrame.origin.y;
+    
+    QiuBaiNewPostViewController* newPostVC = [[QiuBaiNewPostViewController alloc] initWithViewFrame:newVCFrame];
+
+    UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:newPostVC];
+    [self presentViewController:nc
+                       animated:YES
+                     completion:^{
+
+                     }];
 }
 
 - (NSArray*)specialOfferPosts {
