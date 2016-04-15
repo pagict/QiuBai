@@ -30,7 +30,7 @@
         self.textView.delegate = self;
         self.toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, frame.size.height - toolbarHeight + frame.origin.y,
                                                                    frame.size.width, toolbarHeight)];
-        UIBarButtonItem* photoLibButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"image"]
+        UIBarButtonItem* photoLibButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"gallery"]
                                                                            style:UIBarButtonItemStylePlain
                                                                           target:self
                                                                           action:@selector(selectPhoto:)];
