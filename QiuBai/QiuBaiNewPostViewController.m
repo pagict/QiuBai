@@ -8,12 +8,14 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import "QiuBaiNewPostViewController.h"
+#import "customViews/AnonymousSwitch.h"
 
 @interface QiuBaiNewPostViewController ()<UITextViewDelegate, CLLocationManagerDelegate>
 @property (strong, nonatomic)   IBOutlet    UITextView* textView;
 @property (strong, nonatomic)   IBOutlet    UIToolbar* toolBar;
 @property (strong, nonatomic)   IBOutlet    UIButton* locationButton;
 @property (strong, nonatomic)   IBOutlet    UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic)   IBOutlet    AnonymousSwitch *anonymousSwitch;
 
 @property (strong, nonatomic)   CLLocationManager* locationManager;
 @end
@@ -65,12 +67,15 @@
         UIBarButtonItem* cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                       target:self
                                                                                       action:@selector(cancelPost:)];
-        UIBarButtonItem* postButton = [[UIBarButtonItem alloc] initWithTitle:@"发布"
+        UIBarButtonItem* postButton = [[UIBarButtonItem alloc] initWithTitle:@"投稿"
                                                                        style:UIBarButtonItemStylePlain
                                                                       target:self
                                                                       action:@selector(post:)];
+        [postButton setTintColor:[UIColor yellowColor]];
+        self.anonymousSwitch = [[AnonymousSwitch alloc] initWithFrame:CGRectMake(0, 0, 200, 31)];
+        self.navigationItem.titleView = self.anonymousSwitch;
 
-        self.navigationItem.title = @"new Post";
+//        self.navigationItem.title = @"new Post";
         self.navigationItem.leftBarButtonItem = cancelButton;
         self.navigationItem.rightBarButtonItem = postButton;
 

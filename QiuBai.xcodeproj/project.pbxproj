@@ -10,6 +10,7 @@
 		B11313B91CAD042200F883A0 /* QiuBaiPostTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B11313B81CAD042200F883A0 /* QiuBaiPostTableView.m */; };
 		B11313BC1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B11313BB1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m */; };
 		B11313BE1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B11313BD1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib */; };
+		B1217AD41CC11FED0036DF18 /* AnonymousSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = B1217AD31CC11FED0036DF18 /* AnonymousSwitch.m */; };
 		B138324C1CBE402E00E26038 /* QiuBaiNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B138324B1CBE402E00E26038 /* QiuBaiNewPostViewController.m */; };
 		B13F43331CC11AE000836C6B /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = B13F43301CC11AE000836C6B /* camera.png */; };
 		B13F43341CC11AE000836C6B /* gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = B13F43311CC11AE000836C6B /* gallery.png */; };
@@ -24,6 +25,7 @@
 		B1647BF91CB65A470035B66D /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = B1647BF31CB65A470035B66D /* share.png */; };
 		B1647BFA1CB65A470035B66D /* smiley_color.png in Resources */ = {isa = PBXBuildFile; fileRef = B1647BF41CB65A470035B66D /* smiley_color.png */; };
 		B1647BFB1CB65A470035B66D /* smiley_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = B1647BF51CB65A470035B66D /* smiley_gray.png */; };
+		B1A02F351CC1E81F00592C60 /* anonymous.png in Resources */ = {isa = PBXBuildFile; fileRef = B1A02F341CC1E81F00592C60 /* anonymous.png */; };
 		B1A5D46B1CBFD1CA00326FC5 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1A5D46A1CBFD1CA00326FC5 /* Reveal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B1A5D46D1CBFD31300326FC5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B1A5D46C1CBFD31300326FC5 /* libz.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B1A5DBC31CABBCFA00510A86 /* SnappingTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A5DBC11CABBCFA00510A86 /* SnappingTabViewController.m */; };
@@ -52,6 +54,8 @@
 		B11313BA1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiPostTableViewCell.h; path = customViews/QiuBaiPostTableViewCell.h; sourceTree = "<group>"; };
 		B11313BB1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiPostTableViewCell.m; path = customViews/QiuBaiPostTableViewCell.m; sourceTree = "<group>"; };
 		B11313BD1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QiuBaiPostTableViewCell.xib; path = customViews/QiuBaiPostTableViewCell.xib; sourceTree = "<group>"; };
+		B1217AD21CC11FED0036DF18 /* AnonymousSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnonymousSwitch.h; path = customViews/AnonymousSwitch.h; sourceTree = "<group>"; };
+		B1217AD31CC11FED0036DF18 /* AnonymousSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnonymousSwitch.m; path = customViews/AnonymousSwitch.m; sourceTree = "<group>"; };
 		B138324A1CBE402E00E26038 /* QiuBaiNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuBaiNewPostViewController.h; sourceTree = "<group>"; };
 		B138324B1CBE402E00E26038 /* QiuBaiNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuBaiNewPostViewController.m; sourceTree = "<group>"; };
 		B13F43301CC11AE000836C6B /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera.png; path = customViews/images/camera.png; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 		B1647BF31CB65A470035B66D /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share.png; path = customViews/images/share.png; sourceTree = "<group>"; };
 		B1647BF41CB65A470035B66D /* smiley_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smiley_color.png; path = customViews/images/smiley_color.png; sourceTree = "<group>"; };
 		B1647BF51CB65A470035B66D /* smiley_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smiley_gray.png; path = customViews/images/smiley_gray.png; sourceTree = "<group>"; };
+		B1A02F341CC1E81F00592C60 /* anonymous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = anonymous.png; path = customViews/images/anonymous.png; sourceTree = "<group>"; };
 		B1A5D46A1CBFD1CA00326FC5 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../opt/homebrew-cask/Caskroom/reveal/1.6.3/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
 		B1A5D46C1CBFD31300326FC5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		B1A5DBC01CABBCFA00510A86 /* SnappingTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnappingTabViewController.h; path = customviewControllers/SnappingTabViewController.h; sourceTree = "<group>"; };
@@ -137,6 +142,8 @@
 				B1EA0B411CB7E0E90083410E /* EditCommentView.m */,
 				B15EDFFD1CB8A02F0080299F /* QiuBaiTablikeSwitch.h */,
 				B15EDFFE1CB8A02F0080299F /* QiuBaiTablikeSwitch.m */,
+				B1217AD21CC11FED0036DF18 /* AnonymousSwitch.h */,
+				B1217AD31CC11FED0036DF18 /* AnonymousSwitch.m */,
 				B178029E1CB5F6B700DA4E1F /* images */,
 			);
 			name = customViews;
@@ -145,6 +152,7 @@
 		B178029E1CB5F6B700DA4E1F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B1A02F341CC1E81F00592C60 /* anonymous.png */,
 				B13F43301CC11AE000836C6B /* camera.png */,
 				B13F43311CC11AE000836C6B /* gallery.png */,
 				B13F43321CC11AE000836C6B /* video.png */,
@@ -310,6 +318,7 @@
 				B1EA0B441CB7E10A0083410E /* EditComment.xib in Resources */,
 				B13F43351CC11AE000836C6B /* video.png in Resources */,
 				B1647BF91CB65A470035B66D /* share.png in Resources */,
+				B1A02F351CC1E81F00592C60 /* anonymous.png in Resources */,
 				B1647BF81CB65A470035B66D /* comment.png in Resources */,
 				B1647BFB1CB65A470035B66D /* smiley_gray.png in Resources */,
 				B1647BFA1CB65A470035B66D /* smiley_color.png in Resources */,
@@ -344,6 +353,7 @@
 				B11313BC1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m in Sources */,
 				F30D674DEFC71FE35EBA6690 /* QiuEventViewController.m in Sources */,
 				B1F88BC41CAA6F0200093910 /* QiuBaiUser.m in Sources */,
+				B1217AD41CC11FED0036DF18 /* AnonymousSwitch.m in Sources */,
 				F30D6D88A81BC6DFC5FC2F68 /* QiuCircleViewController.m in Sources */,
 				B1EA0B501CB7EEA40083410E /* QiuBaiPostDetailViewController.m in Sources */,
 				B16379101CB7640A00070A39 /* QiuBaiCommentTableViewCell.m in Sources */,
