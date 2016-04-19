@@ -11,7 +11,6 @@
 		B11313BC1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B11313BB1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m */; };
 		B11313BE1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B11313BD1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib */; };
 		B1217AD41CC11FED0036DF18 /* AnonymousSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = B1217AD31CC11FED0036DF18 /* AnonymousSwitch.m */; };
-		B138324C1CBE402E00E26038 /* QiuBaiNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B138324B1CBE402E00E26038 /* QiuBaiNewPostViewController.m */; };
 		B13F43331CC11AE000836C6B /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = B13F43301CC11AE000836C6B /* camera.png */; };
 		B13F43341CC11AE000836C6B /* gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = B13F43311CC11AE000836C6B /* gallery.png */; };
 		B13F43351CC11AE000836C6B /* video.png in Resources */ = {isa = PBXBuildFile; fileRef = B13F43321CC11AE000836C6B /* video.png */; };
@@ -30,6 +29,9 @@
 		B1A5D46B1CBFD1CA00326FC5 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1A5D46A1CBFD1CA00326FC5 /* Reveal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B1A5D46D1CBFD31300326FC5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B1A5D46C1CBFD31300326FC5 /* libz.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B1A5DBC31CABBCFA00510A86 /* SnappingTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A5DBC11CABBCFA00510A86 /* SnappingTabViewController.m */; };
+		B1BC2AAC1CC63B9500D2C66E /* QiuBaiNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BC2AAB1CC63B9500D2C66E /* QiuBaiNewPostViewController.m */; };
+		B1BC2AAF1CC658D400D2C66E /* QiuBaiImageSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BC2AAE1CC658D400D2C66E /* QiuBaiImageSelectionController.m */; };
+		B1BC2AB21CC65E4F00D2C66E /* QiuBaiImageEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BC2AB11CC65E4F00D2C66E /* QiuBaiImageEditorViewController.m */; };
 		B1BC5F6F1CC47B240083724C /* cancel_x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1BC5F6E1CC47B240083724C /* cancel_x.png */; };
 		B1EA0B421CB7E0E90083410E /* EditCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EA0B411CB7E0E90083410E /* EditCommentView.m */; };
 		B1EA0B441CB7E10A0083410E /* EditComment.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1EA0B431CB7E10A0083410E /* EditComment.xib */; };
@@ -50,16 +52,6 @@
 		F30D6EF119BD6FD47F45A47B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F30D61F22149C8F62A24B842 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B1BC5F791CC4CBB30083724C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F30D69A42B2A21901903B478 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F30D66E7AC912BECB4D5AF3C;
-			remoteInfo = QiuBai;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		B11313B71CAD042200F883A0 /* QiuBaiPostTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiPostTableView.h; path = customViews/QiuBaiPostTableView.h; sourceTree = "<group>"; };
 		B11313B81CAD042200F883A0 /* QiuBaiPostTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiPostTableView.m; path = customViews/QiuBaiPostTableView.m; sourceTree = "<group>"; };
@@ -68,8 +60,6 @@
 		B11313BD1CAD080800F883A0 /* QiuBaiPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QiuBaiPostTableViewCell.xib; path = customViews/QiuBaiPostTableViewCell.xib; sourceTree = "<group>"; };
 		B1217AD21CC11FED0036DF18 /* AnonymousSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnonymousSwitch.h; path = customViews/AnonymousSwitch.h; sourceTree = "<group>"; };
 		B1217AD31CC11FED0036DF18 /* AnonymousSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnonymousSwitch.m; path = customViews/AnonymousSwitch.m; sourceTree = "<group>"; };
-		B138324A1CBE402E00E26038 /* QiuBaiNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiuBaiNewPostViewController.h; sourceTree = "<group>"; };
-		B138324B1CBE402E00E26038 /* QiuBaiNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiuBaiNewPostViewController.m; sourceTree = "<group>"; };
 		B13F43301CC11AE000836C6B /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera.png; path = customViews/images/camera.png; sourceTree = "<group>"; };
 		B13F43311CC11AE000836C6B /* gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gallery.png; path = customViews/images/gallery.png; sourceTree = "<group>"; };
 		B13F43321CC11AE000836C6B /* video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video.png; path = customViews/images/video.png; sourceTree = "<group>"; };
@@ -93,8 +83,13 @@
 		B1A5DBC01CABBCFA00510A86 /* SnappingTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnappingTabViewController.h; path = customviewControllers/SnappingTabViewController.h; sourceTree = "<group>"; };
 		B1A5DBC11CABBCFA00510A86 /* SnappingTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnappingTabViewController.m; path = customviewControllers/SnappingTabViewController.m; sourceTree = "<group>"; };
 		B1A5DBC51CABD11D00510A86 /* SnappingTabViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SnappingTabViewDelegate.h; path = customviewControllers/SnappingTabViewDelegate.h; sourceTree = "<group>"; };
+		B1BC2AAA1CC63B9500D2C66E /* QiuBaiNewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiNewPostViewController.h; path = customviewControllers/QiuBaiNewPostViewController.h; sourceTree = "<group>"; };
+		B1BC2AAB1CC63B9500D2C66E /* QiuBaiNewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiNewPostViewController.m; path = customviewControllers/QiuBaiNewPostViewController.m; sourceTree = "<group>"; };
+		B1BC2AAD1CC658D400D2C66E /* QiuBaiImageSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiImageSelectionController.h; path = customviewControllers/QiuBaiImageSelectionController.h; sourceTree = "<group>"; };
+		B1BC2AAE1CC658D400D2C66E /* QiuBaiImageSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiImageSelectionController.m; path = customviewControllers/QiuBaiImageSelectionController.m; sourceTree = "<group>"; };
+		B1BC2AB01CC65E4F00D2C66E /* QiuBaiImageEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiImageEditorViewController.h; path = customviewControllers/QiuBaiImageEditorViewController.h; sourceTree = "<group>"; };
+		B1BC2AB11CC65E4F00D2C66E /* QiuBaiImageEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiImageEditorViewController.m; path = customviewControllers/QiuBaiImageEditorViewController.m; sourceTree = "<group>"; };
 		B1BC5F6E1CC47B240083724C /* cancel_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cancel_x.png; path = customViews/images/cancel_x.png; sourceTree = "<group>"; };
-		B1BC5F741CC4CBB30083724C /* QiuBaiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QiuBaiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1EA0B401CB7E0E90083410E /* EditCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditCommentView.h; path = customViews/EditCommentView.h; sourceTree = "<group>"; };
 		B1EA0B411CB7E0E90083410E /* EditCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditCommentView.m; path = customViews/EditCommentView.m; sourceTree = "<group>"; };
 		B1EA0B431CB7E10A0083410E /* EditComment.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EditComment.xib; path = customViews/EditComment.xib; sourceTree = "<group>"; };
@@ -128,13 +123,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B1BC5F711CC4CBB30083724C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F30D63772AEEB5261B3F7039 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,8 +181,12 @@
 		B1A5DBBF1CABBCBE00510A86 /* customViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B138324A1CBE402E00E26038 /* QiuBaiNewPostViewController.h */,
-				B138324B1CBE402E00E26038 /* QiuBaiNewPostViewController.m */,
+				B1BC2AB01CC65E4F00D2C66E /* QiuBaiImageEditorViewController.h */,
+				B1BC2AB11CC65E4F00D2C66E /* QiuBaiImageEditorViewController.m */,
+				B1BC2AAD1CC658D400D2C66E /* QiuBaiImageSelectionController.h */,
+				B1BC2AAE1CC658D400D2C66E /* QiuBaiImageSelectionController.m */,
+				B1BC2AAA1CC63B9500D2C66E /* QiuBaiNewPostViewController.h */,
+				B1BC2AAB1CC63B9500D2C66E /* QiuBaiNewPostViewController.m */,
 				B1EA0B4E1CB7EEA40083410E /* QiuBaiPostDetailViewController.h */,
 				B1EA0B4F1CB7EEA40083410E /* QiuBaiPostDetailViewController.m */,
 				B1A5DBC01CABBCFA00510A86 /* SnappingTabViewController.h */,
@@ -236,7 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				F30D6DC859FA0491E27BEA90 /* QiuBai.app */,
-				B1BC5F741CC4CBB30083724C /* QiuBaiUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -285,24 +276,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B1BC5F731CC4CBB30083724C /* QiuBaiUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B1BC5F7B1CC4CBB30083724C /* Build configuration list for PBXNativeTarget "QiuBaiUITests" */;
-			buildPhases = (
-				B1BC5F701CC4CBB30083724C /* Sources */,
-				B1BC5F711CC4CBB30083724C /* Frameworks */,
-				B1BC5F721CC4CBB30083724C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B1BC5F7A1CC4CBB30083724C /* PBXTargetDependency */,
-			);
-			name = QiuBaiUITests;
-			productName = QiuBaiUITests;
-			productReference = B1BC5F741CC4CBB30083724C /* QiuBaiUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		F30D66E7AC912BECB4D5AF3C /* QiuBai */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F30D6316B5A4017DC482B00F /* Build configuration list for PBXNativeTarget "QiuBai" */;
@@ -328,12 +301,6 @@
 			attributes = {
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "pi-lot.org";
-				TargetAttributes = {
-					B1BC5F731CC4CBB30083724C = {
-						CreatedOnToolsVersion = 7.3;
-						TestTargetID = F30D66E7AC912BECB4D5AF3C;
-					};
-				};
 			};
 			buildConfigurationList = F30D6467F51852E6EF45A164 /* Build configuration list for PBXProject "QiuBai" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -348,19 +315,11 @@
 			projectRoot = "";
 			targets = (
 				F30D66E7AC912BECB4D5AF3C /* QiuBai */,
-				B1BC5F731CC4CBB30083724C /* QiuBaiUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B1BC5F721CC4CBB30083724C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F30D69789F778AB8343A7943 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -390,20 +349,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B1BC5F701CC4CBB30083724C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F30D6A8F509A319B3B2EC3BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B138324C1CBE402E00E26038 /* QiuBaiNewPostViewController.m in Sources */,
 				B1EA0B421CB7E0E90083410E /* EditCommentView.m in Sources */,
 				B1EA0B4B1CB7EE2B0083410E /* ModelStore.m in Sources */,
+				B1BC2AAC1CC63B9500D2C66E /* QiuBaiNewPostViewController.m in Sources */,
 				F30D6949FAC5BF583679123E /* main.m in Sources */,
 				F30D6B2D1147BB43629A0D6E /* QiuBaiAppDelegate.m in Sources */,
 				B11313B91CAD042200F883A0 /* QiuBaiPostTableView.m in Sources */,
@@ -412,6 +364,7 @@
 				B1EA0B4D1CB7EE2B0083410E /* QiuBaiPost.m in Sources */,
 				B15EDFFF1CB8A02F0080299F /* QiuBaiTablikeSwitch.m in Sources */,
 				B11313BC1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m in Sources */,
+				B1BC2AAF1CC658D400D2C66E /* QiuBaiImageSelectionController.m in Sources */,
 				F30D674DEFC71FE35EBA6690 /* QiuEventViewController.m in Sources */,
 				B1F88BC41CAA6F0200093910 /* QiuBaiUser.m in Sources */,
 				B1217AD41CC11FED0036DF18 /* AnonymousSwitch.m in Sources */,
@@ -420,42 +373,13 @@
 				B16379101CB7640A00070A39 /* QiuBaiCommentTableViewCell.m in Sources */,
 				B1A5DBC31CABBCFA00510A86 /* SnappingTabViewController.m in Sources */,
 				B16379061CB74C9C00070A39 /* QiuBaiDataObject.m in Sources */,
+				B1BC2AB21CC65E4F00D2C66E /* QiuBaiImageEditorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		B1BC5F7A1CC4CBB30083724C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F30D66E7AC912BECB4D5AF3C /* QiuBai */;
-			targetProxy = B1BC5F791CC4CBB30083724C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		B1BC5F7C1CC4CBB30083724C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = QiuBaiUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.pi-lot.QiuBaiUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = QiuBai;
-			};
-			name = Debug;
-		};
-		B1BC5F7D1CC4CBB30083724C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = QiuBaiUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.pi-lot.QiuBaiUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = QiuBai;
-			};
-			name = Release;
-		};
 		F30D636E3717540D4CAD2EEC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -579,14 +503,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B1BC5F7B1CC4CBB30083724C /* Build configuration list for PBXNativeTarget "QiuBaiUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B1BC5F7C1CC4CBB30083724C /* Debug */,
-				B1BC5F7D1CC4CBB30083724C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
 		F30D6316B5A4017DC482B00F /* Build configuration list for PBXNativeTarget "QiuBai" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

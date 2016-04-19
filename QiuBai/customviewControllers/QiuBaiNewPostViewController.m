@@ -8,9 +8,11 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import "QiuBaiNewPostViewController.h"
-#import "customViews/AnonymousSwitch.h"
+#import "../customViews/AnonymousSwitch.h"
+#import "QiuBaiImageEditorViewController.h"
+#import "QiuBaiImageSelectionController.h"
 
-@interface QiuBaiNewPostViewController ()<UITextViewDelegate, CLLocationManagerDelegate>
+@interface QiuBaiNewPostViewController ()<UITextViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic)   IBOutlet    UITextView* textView;
 @property (strong, nonatomic)   IBOutlet    UIToolbar* toolBar;
 @property (strong, nonatomic)   IBOutlet    UIView* locationView;
@@ -120,7 +122,17 @@
 }
 
 - (IBAction)selectPhoto:(id)sender {
+    BOOL isPhotoLibAvailable = [UIImagePickerController isSourceTypeAvailable:
+                                UIImagePickerControllerSourceTypePhotoLibrary];
+    if (! isPhotoLibAvailable) {
+        return;
+    }
 
+    QiuBaiImageSelectionController* pickImageController = [[QiuBaiImageSelectionController alloc] init];
+    pickImageController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    pickImageController.allowsEditing = NO;
+    pickImageController.delegate = self;
+    [self presentViewController:pickImageController animated:NO completion:nil];
 }
 
 - (IBAction)takePhoto:(id)sender {
@@ -311,4 +323,27 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     [self changeAppearanceAsNotLocated];
     [self placeButtonsAsNotLocated];
 }
+
+#pragma mark - UIImagePickerController Delegate
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(nonnull NSDictionary<NSString *,id> *)info {
+    UIImage* selectedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    QiuBaiImageEditorViewController* addImageVC = [[QiuBaiImageEditorViewController alloc] initWithImage:selectedImage];
+    [picker presentViewController:addImageVC animated:NO completion:nil];
+
+//    [self dismissViewControllerAnimated:NO completion:^{
+//        //Update
+//        NSTextAttachment* attachment = [[NSTextAttachment alloc] init];
+//        attachment.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+//        NSAttributedString* as = [NSAttributedString attributedStringWithAttachment:attachment];
+//        [self.textView setAttributedText: as];
+//    }];
+}
+
+
+#pragma mark -
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
 @end
