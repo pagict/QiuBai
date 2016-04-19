@@ -22,6 +22,8 @@
 
 @property (strong, nonatomic)   CLLocationManager* locationManager;
 @property (strong, nonatomic)   CLPlacemark* placemark;
+
+@property (strong, nonatomic)   UIImage*    attachedImage;
 @end
 
 @implementation QiuBaiNewPostViewController
@@ -344,6 +346,17 @@ didFinishPickingMediaWithInfo:(nonnull NSDictionary<NSString *,id> *)info {
 #pragma mark -
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    if ([self.presentedViewController isKindOfClass:[QiuBaiImageSelectionController class]]) {
+        QiuBaiImageSelectionController* isc = (QiuBaiImageSelectionController*)self.presentedViewController;
+        self.attachedImage = isc.selectedImage;
+        [self updateTextView];
+    }
+}
+
+- (void)updateTextView {
+    NSTextAttachment* attachment = [[NSTextAttachment alloc] init];
+    attachment.image = self.attachedImage;
+    [self.textView setAttributedText:[NSAttributedString attributedStringWithAttachment:attachment]];
 }
 
 @end

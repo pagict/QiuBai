@@ -32,6 +32,10 @@
 		B1BC2AAC1CC63B9500D2C66E /* QiuBaiNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BC2AAB1CC63B9500D2C66E /* QiuBaiNewPostViewController.m */; };
 		B1BC2AAF1CC658D400D2C66E /* QiuBaiImageSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BC2AAE1CC658D400D2C66E /* QiuBaiImageSelectionController.m */; };
 		B1BC2AB21CC65E4F00D2C66E /* QiuBaiImageEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BC2AB11CC65E4F00D2C66E /* QiuBaiImageEditorViewController.m */; };
+		B1BC2AB61CC6784E00D2C66E /* ImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BC2AB51CC6784E00D2C66E /* ImageProcessor.m */; };
+		B1BC2AC01CC6882B00D2C66E /* mosaic.png in Resources */ = {isa = PBXBuildFile; fileRef = B1BC2ABD1CC6882B00D2C66E /* mosaic.png */; };
+		B1BC2AC11CC6882B00D2C66E /* qiubai-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B1BC2ABE1CC6882B00D2C66E /* qiubai-logo.png */; };
+		B1BC2AC21CC6882B00D2C66E /* rotate_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B1BC2ABF1CC6882B00D2C66E /* rotate_icon.png */; };
 		B1BC5F6F1CC47B240083724C /* cancel_x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1BC5F6E1CC47B240083724C /* cancel_x.png */; };
 		B1EA0B421CB7E0E90083410E /* EditCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1EA0B411CB7E0E90083410E /* EditCommentView.m */; };
 		B1EA0B441CB7E10A0083410E /* EditComment.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1EA0B431CB7E10A0083410E /* EditComment.xib */; };
@@ -89,6 +93,11 @@
 		B1BC2AAE1CC658D400D2C66E /* QiuBaiImageSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiImageSelectionController.m; path = customviewControllers/QiuBaiImageSelectionController.m; sourceTree = "<group>"; };
 		B1BC2AB01CC65E4F00D2C66E /* QiuBaiImageEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QiuBaiImageEditorViewController.h; path = customviewControllers/QiuBaiImageEditorViewController.h; sourceTree = "<group>"; };
 		B1BC2AB11CC65E4F00D2C66E /* QiuBaiImageEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QiuBaiImageEditorViewController.m; path = customviewControllers/QiuBaiImageEditorViewController.m; sourceTree = "<group>"; };
+		B1BC2AB41CC6784E00D2C66E /* ImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageProcessor.h; path = utility/ImageProcessor.h; sourceTree = "<group>"; };
+		B1BC2AB51CC6784E00D2C66E /* ImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageProcessor.m; path = utility/ImageProcessor.m; sourceTree = "<group>"; };
+		B1BC2ABD1CC6882B00D2C66E /* mosaic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mosaic.png; path = customViews/images/mosaic.png; sourceTree = "<group>"; };
+		B1BC2ABE1CC6882B00D2C66E /* qiubai-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "qiubai-logo.png"; path = "customViews/images/qiubai-logo.png"; sourceTree = "<group>"; };
+		B1BC2ABF1CC6882B00D2C66E /* rotate_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rotate_icon.png; path = customViews/images/rotate_icon.png; sourceTree = "<group>"; };
 		B1BC5F6E1CC47B240083724C /* cancel_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cancel_x.png; path = customViews/images/cancel_x.png; sourceTree = "<group>"; };
 		B1EA0B401CB7E0E90083410E /* EditCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditCommentView.h; path = customViews/EditCommentView.h; sourceTree = "<group>"; };
 		B1EA0B411CB7E0E90083410E /* EditCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditCommentView.m; path = customViews/EditCommentView.m; sourceTree = "<group>"; };
@@ -169,6 +178,9 @@
 				B1647BF01CB65A470035B66D /* angry_color.png */,
 				B1647BF11CB65A470035B66D /* angry_gray.png */,
 				B1647BF21CB65A470035B66D /* comment.png */,
+				B1BC2ABD1CC6882B00D2C66E /* mosaic.png */,
+				B1BC2ABE1CC6882B00D2C66E /* qiubai-logo.png */,
+				B1BC2ABF1CC6882B00D2C66E /* rotate_icon.png */,
 				B1647BF31CB65A470035B66D /* share.png */,
 				B1647BF41CB65A470035B66D /* smiley_color.png */,
 				B1BC5F6E1CC47B240083724C /* cancel_x.png */,
@@ -195,6 +207,15 @@
 				F30D6E21DAAF22F3C22AB32C /* SnappingTabViewDataSource.h */,
 			);
 			name = customViewControllers;
+			sourceTree = "<group>";
+		};
+		B1BC2AB31CC6781500D2C66E /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				B1BC2AB41CC6784E00D2C66E /* ImageProcessor.h */,
+				B1BC2AB51CC6784E00D2C66E /* ImageProcessor.m */,
+			);
+			name = utility;
 			sourceTree = "<group>";
 		};
 		B1F88BC11CAA6EDC00093910 /* models */ = {
@@ -258,6 +279,7 @@
 		F30D6F211E72B0CC4D25184A /* QiuBai */ = {
 			isa = PBXGroup;
 			children = (
+				B1BC2AB31CC6781500D2C66E /* utility */,
 				B11313B31CAD03CD00F883A0 /* customViews */,
 				B1A5DBBF1CABBCBE00510A86 /* customViewControllers */,
 				B1F88BC11CAA6EDC00093910 /* models */,
@@ -329,10 +351,13 @@
 				B1EA0B441CB7E10A0083410E /* EditComment.xib in Resources */,
 				B1BC5F6F1CC47B240083724C /* cancel_x.png in Resources */,
 				B13F43351CC11AE000836C6B /* video.png in Resources */,
+				B1BC2AC01CC6882B00D2C66E /* mosaic.png in Resources */,
+				B1BC2AC21CC6882B00D2C66E /* rotate_icon.png in Resources */,
 				B1647BF91CB65A470035B66D /* share.png in Resources */,
 				B1A02F351CC1E81F00592C60 /* anonymous.png in Resources */,
 				B1647BF81CB65A470035B66D /* comment.png in Resources */,
 				B1647BFB1CB65A470035B66D /* smiley_gray.png in Resources */,
+				B1BC2AC11CC6882B00D2C66E /* qiubai-logo.png in Resources */,
 				B1647BFA1CB65A470035B66D /* smiley_color.png in Resources */,
 				B1F88BCE1CAAABE800093910 /* comments.json in Resources */,
 				B13F43331CC11AE000836C6B /* camera.png in Resources */,
@@ -365,6 +390,7 @@
 				B15EDFFF1CB8A02F0080299F /* QiuBaiTablikeSwitch.m in Sources */,
 				B11313BC1CAD07EF00F883A0 /* QiuBaiPostTableViewCell.m in Sources */,
 				B1BC2AAF1CC658D400D2C66E /* QiuBaiImageSelectionController.m in Sources */,
+				B1BC2AB61CC6784E00D2C66E /* ImageProcessor.m in Sources */,
 				F30D674DEFC71FE35EBA6690 /* QiuEventViewController.m in Sources */,
 				B1F88BC41CAA6F0200093910 /* QiuBaiUser.m in Sources */,
 				B1217AD41CC11FED0036DF18 /* AnonymousSwitch.m in Sources */,

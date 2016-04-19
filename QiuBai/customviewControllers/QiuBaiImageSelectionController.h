@@ -9,4 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface QiuBaiImageSelectionController : UIImagePickerController
+@property (strong, nonatomic)   UIImage* selectedImage;
 @end

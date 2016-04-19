@@ -14,6 +14,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([self.presentedViewController isKindOfClass:[QiuBaiImageEditorViewController class]]) {
+        QiuBaiImageEditorViewController* ievc = (QiuBaiImageEditorViewController*)self.presentedViewController;
+        self.selectedImage = ievc.currentImage;
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
