@@ -9,8 +9,10 @@
 #import "QiuBaiImageEditorViewController.h"
 #import "QiuBaiImageSelectionController.h"
 #import "../utility/QiuBaiImageProcessors.h"
+#import "../customViews/QiuBaiMosaicView.h"
 
 @interface QiuBaiImageEditorViewController ()
+@property (strong, nonatomic)   UIView* imageBackgroundView;
 @property (strong, nonatomic)   UIImageView* imageView;
 @property (strong, nonatomic)   NSMutableArray* mosaicViews;
 @end
@@ -60,18 +62,28 @@
         [mosaicButton setTitle:@"打码" forState:UIControlStateNormal];
         [mosaicButton addTarget:self action:@selector(addMosaic:) forControlEvents:UIControlEventTouchUpInside];
 
-        CGRect imageViewRect = CGRectMake(0, cancelRect.origin.y + cancelRect.size.height,
+        CGRect imageBgViewRect = CGRectMake(0, cancelRect.origin.y + cancelRect.size.height,
                                           screenWidth, mosaicRect.origin.y - cancelRect.origin.y - cancelRect.size.height);
-        self.imageView = [[UIImageView alloc] initWithFrame:imageViewRect];
-        self.imageView.image = image;
-        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        self.imageView.backgroundColor = [UIColor grayColor];
+        self.imageBackgroundView = [[UIView alloc] initWithFrame:imageBgViewRect];
+        self.imageBackgroundView.backgroundColor = [UIColor grayColor];
 
-        [self.view addSubview:self.imageView];
+        CGRect imageViewRect = imageBgViewRect;
+        imageViewRect.origin = CGPointZero;
+        self.imageView = [[UIImageView alloc] initWithFrame:imageViewRect];
+        self.imageView.userInteractionEnabled = YES;
+        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+
+        [self.imageBackgroundView addSubview:self.imageView];
+//        self.imageView.backgroundColor = [UIColor grayColor];
+
+        [self.view addSubview:self.imageBackgroundView];
         [self.view addSubview:cancelButton];
         [self.view addSubview:confirmButton];
         [self.view addSubview:rotateButton];
         [self.view addSubview:mosaicButton];
+
+
+        [self setImage:image];
     }
     return self;
 }
@@ -86,16 +98,33 @@
 
 }
 
+- (void)setImage:(UIImage*)image {
+    self.imageView.image = image;
+    CGFloat imageScaleFactor = MIN(self.imageView.bounds.size.width / image.size.width,
+                                   self.imageView.bounds.size.height / image.size.height);
+    CGRect newFrame = CGRectMake(0, 0, image.size.width * imageScaleFactor, image.size.height * imageScaleFactor);
+    self.imageView.frame = newFrame;
+    self.imageView.center = CGPointMake(self.imageBackgroundView.frame.size.width / 2,
+                                        self.imageBackgroundView.frame.size.height / 2);
+    [self.imageBackgroundView setNeedsDisplay];
+}
+
 - (IBAction)rotateImage:(id)sender {
     UIImage* currentImage = self.imageView.image;
     QiuBaiImageRotateProcessor* ip = [[QiuBaiImageRotateProcessor alloc] init];
     ip.rotateDegree = M_PI_2;
     UIImage* newImage = [ip decorateImage:currentImage];
-    self.imageView.image = newImage;
+    [self setImage:newImage];
 }
 
 - (IBAction)addMosaic:(id)sender {
-
+    CGRect mosaicRect = CGRectZero;
+    mosaicRect.origin = self.imageView.center;
+    mosaicRect.size = CGSizeMake(50, 50);
+    QiuBaiMosaicView *mosaicView = [[QiuBaiMosaicView alloc] initWithFrame:mosaicRect];
+    mosaicView.superViewSize = self.imageView.bounds.size;
+    [self.imageView addSubview:mosaicView];
+    [self.mosaicViews addObject:mosaicView];
 }
 
 - (BOOL)prefersStatusBarHidden   {
