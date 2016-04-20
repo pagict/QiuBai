@@ -8,8 +8,10 @@
 
 #import "QiuBaiImageEditorViewController.h"
 #import "QiuBaiImageSelectionController.h"
+#import "../utility/QiuBaiImageProcessors.h"
 
 @interface QiuBaiImageEditorViewController ()
+@property (strong, nonatomic)   UIImageView* imageView;
 @property (strong, nonatomic)   NSMutableArray* mosaicViews;
 @end
 
@@ -60,12 +62,12 @@
 
         CGRect imageViewRect = CGRectMake(0, cancelRect.origin.y + cancelRect.size.height,
                                           screenWidth, mosaicRect.origin.y - cancelRect.origin.y - cancelRect.size.height);
-        UIImageView* iv = [[UIImageView alloc] initWithFrame:imageViewRect];
-        iv.image = image;
-        iv.contentMode = UIViewContentModeScaleAspectFit;
-        iv.backgroundColor = [UIColor grayColor];
+        self.imageView = [[UIImageView alloc] initWithFrame:imageViewRect];
+        self.imageView.image = image;
+        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        self.imageView.backgroundColor = [UIColor grayColor];
 
-        [self.view addSubview:iv];
+        [self.view addSubview:self.imageView];
         [self.view addSubview:cancelButton];
         [self.view addSubview:confirmButton];
         [self.view addSubview:rotateButton];
@@ -85,7 +87,11 @@
 }
 
 - (IBAction)rotateImage:(id)sender {
-
+    UIImage* currentImage = self.imageView.image;
+    QiuBaiImageRotateProcessor* ip = [[QiuBaiImageRotateProcessor alloc] init];
+    ip.rotateDegree = M_PI_2;
+    UIImage* newImage = [ip decorateImage:currentImage];
+    self.imageView.image = newImage;
 }
 
 - (IBAction)addMosaic:(id)sender {
@@ -94,5 +100,13 @@
 
 - (BOOL)prefersStatusBarHidden   {
     return YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+//    UIImage* currentImage = self.imageView.image;
+//    QiuBaiImageWatermarkProcessor* ip =  [[QiuBaiImageWatermarkProcessor alloc] init];
+//    ip.watermarkImage = [UIImage imageNamed:@"qiubai-logo"];
+//    UIImage* newImage = [ip decorateImage:currentImage];
+//    self.imageView.image = newImage;
 }
 @end
