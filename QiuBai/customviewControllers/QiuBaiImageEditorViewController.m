@@ -115,6 +115,15 @@
     ip.rotateDegree = M_PI_2;
     UIImage* newImage = [ip decorateImage:currentImage];
     [self setImage:newImage];
+
+    for (QiuBaiMosaicView* view in self.mosaicViews) {
+        view.superViewSize = self.imageView.frame.size;
+        if ( ! CGRectContainsRect(self.imageView.bounds, view.frame)) {
+            CGRect rect = view.frame;
+            rect.origin = CGPointZero;
+            view.frame = rect;
+        }
+    }
 }
 
 - (IBAction)addMosaic:(id)sender {
