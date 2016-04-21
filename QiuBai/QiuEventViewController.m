@@ -8,8 +8,7 @@
 
 
 #import "QiuEventViewController.h"
-#import "customviewControllers/SnappingTabViewController.h"
-#import "customviewControllers/SnappingTabViewDataSource.h"
+#import "customViews/SnappingTabView.h"
 #import "customViews/QiuBaiPostTableView.h"
 #import "customViews/QiuBaiPostTableViewCell.h"
 #import "QiuBaiPostDetailViewController.h"
@@ -75,7 +74,7 @@
 
 
 #pragma mark - SnappingTabViewDataSource
-- (NSArray<UIView*> *)viewsInSnappingTabViewController:(SnappingTabViewController *)controller {
+- (NSArray<UIView*> *)viewsInSnappingTabView:(SnappingTabView *)snappingTabView {
     CGRect rect = [self tableViewFrameRect];
     QiuBaiPostTableView *t1 = [[QiuBaiPostTableView alloc] initWithFrame:rect];
     t1.dataSource = self;
@@ -87,7 +86,7 @@
     [self.subViews addObject:t2];
     return @[t1, t2]; 
 }
-- (NSArray<NSString*> *)titlesInSnappingTabViewController:(SnappingTabViewController *)controller {
+- (NSArray<NSString*> *)titlesInSnappingTabView:(SnappingTabView *)snappingTabView {
     return @[@"tab1", @"long--tab--name"];
 }
 
@@ -120,11 +119,13 @@
     CGRect rect = CGRectMake(0, naviHeight + statusBarHeieght,
                              [UIScreen mainScreen].bounds.size.width,
                              [UIScreen mainScreen].bounds.size.height - naviHeight - tabHeight - statusBarHeieght);
-    SnappingTabViewController *snappingTabViewController = [[SnappingTabViewController alloc] initWithFrame:rect];
+    SnappingTabView *snappingTabView= [[SnappingTabView alloc] initWithFrame:rect];
+    UIViewController* snappingTabViewController = [[UIViewController alloc] init];
+    snappingTabViewController.view = snappingTabView;
     self.viewControllers = @[snappingTabViewController];
     self.subViews = [[NSMutableArray alloc] init];
-    snappingTabViewController.datasource = self;
-    snappingTabViewController.delegate = self;
+    snappingTabView.datasource = self;
+    snappingTabView.delegate = self;
 
 
     UIBarButtonItem* leftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
@@ -171,7 +172,7 @@
 }
 
 - (CGRect)tableViewFrameRect {
-    SnappingTabViewController* snappingTab = (SnappingTabViewController*)self.topViewController;
+    SnappingTabView* snappingTab = (SnappingTabView*)self.topViewController.view;
     return [snappingTab subViewRect];
 }
 
