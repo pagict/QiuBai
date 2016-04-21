@@ -100,8 +100,8 @@
 
 - (void)setImage:(UIImage*)image {
     self.imageView.image = image;
-    CGFloat imageScaleFactor = MIN(self.imageView.bounds.size.width / image.size.width,
-                                   self.imageView.bounds.size.height / image.size.height);
+    CGFloat imageScaleFactor = MIN(self.imageBackgroundView.bounds.size.width / image.size.width,
+                                   self.imageBackgroundView.bounds.size.height / image.size.height);
     CGRect newFrame = CGRectMake(0, 0, image.size.width * imageScaleFactor, image.size.height * imageScaleFactor);
     self.imageView.frame = newFrame;
     self.imageView.center = CGPointMake(self.imageBackgroundView.frame.size.width / 2,
