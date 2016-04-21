@@ -70,7 +70,10 @@
 
 
 - (IBAction)cancelMosaic:(id)sender {
-
+    if (self.delegate) {
+        [self removeFromSuperview];
+        [self.delegate cancelledMosaicView:self];
+    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

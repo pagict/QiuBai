@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class QiuBaiMosaicView;
+
+@protocol QiuBaiMosaicViewDelegate <NSObject>
+
+- (void)cancelledMosaicView:(QiuBaiMosaicView*)mosaicView;
+
+@end
 
 @interface QiuBaiMosaicView : UIView
 @property (strong, nonatomic)   UIImage* mosaicImage;
 @property (assign, nonatomic)   CGSize   superViewSize;
+@property (weak, nonatomic)     id<QiuBaiMosaicViewDelegate> delegate;
 @property (assign, nonatomic, readonly)     CGRect imageRect;
 @end

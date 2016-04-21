@@ -11,7 +11,7 @@
 #import "../utility/QiuBaiImageProcessors.h"
 #import "../customViews/QiuBaiMosaicView.h"
 
-@interface QiuBaiImageEditorViewController ()
+@interface QiuBaiImageEditorViewController () <QiuBaiMosaicViewDelegate>
 @property (strong, nonatomic)   UIView* imageBackgroundView;
 @property (strong, nonatomic)   UIImageView* imageView;
 @property (strong, nonatomic)   NSMutableArray* mosaicViews;
@@ -123,6 +123,7 @@
     mosaicRect.size = CGSizeMake(50, 50);
     QiuBaiMosaicView *mosaicView = [[QiuBaiMosaicView alloc] initWithFrame:mosaicRect];
     mosaicView.superViewSize = self.imageView.bounds.size;
+    mosaicView.delegate = self;
     [self.imageView addSubview:mosaicView];
     [self.mosaicViews addObject:mosaicView];
 }
@@ -137,5 +138,10 @@
 //    ip.watermarkImage = [UIImage imageNamed:@"qiubai-logo"];
 //    UIImage* newImage = [ip decorateImage:currentImage];
 //    self.imageView.image = newImage;
+}
+
+#pragma mark - QiuBaiMosaicView Delegate
+- (void)cancelledMosaicView:(QiuBaiMosaicView *)mosaicView {
+    [self.mosaicViews removeObject:mosaicView];
 }
 @end
