@@ -15,42 +15,48 @@
 
 @property (assign, nonatomic)       CGPoint     lastLocation;
 @property (assign, nonatomic)       CGPoint     localLocation;
+@property (assign, nonatomic)       CGFloat     maximumMosaicImageWidth;
+@property (assign, nonatomic)       CGFloat     minimumMosaicImageWidth;
+@property (assign, nonatomic)       CGFloat     buttonWidth;
 @end
 
 @implementation QiuBaiMosaicView
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        CGFloat buttonWidth = 10;
+        self.buttonWidth = 20;
         CGFloat buttonAlpha = 0.7;
-        self.cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonWidth, buttonWidth)];
+        self.cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.buttonWidth, self.buttonWidth)];
         [self.cancelButton setImage:[UIImage imageNamed:@"cancel_x"] forState:UIControlStateNormal];
-        self.cancelButton.layer.cornerRadius = buttonWidth / 2;
-//        self.cancelButton.backgroundColor = [UIColor lightGrayColor];
+        self.cancelButton.layer.cornerRadius = self.buttonWidth / 2;
         self.cancelButton.layer.masksToBounds = YES;
         self.cancelButton.alpha = buttonAlpha;
         [self.cancelButton addTarget:self action:@selector(cancelMosaic:) forControlEvents:UIControlEventTouchUpInside];
 
-        self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(buttonWidth / 2, buttonWidth / 2,
-                                                                      frame.size.width - buttonWidth,
-                                                                       frame.size.height - buttonWidth)];
+        self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.buttonWidth / 2, self.buttonWidth / 2,
+                                                                      frame.size.width - self.buttonWidth,
+                                                                       frame.size.height - self.buttonWidth)];
         self.imageView.userInteractionEnabled = YES;
         self.imageView.image = self.mosaicImage;
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
 
-        self.resizeButton = [[UIButton alloc] initWithFrame:CGRectMake(frame.size.width - buttonWidth,
-                                                                      frame.size.height - buttonWidth,
-                                                                       buttonWidth, buttonWidth)];
+        self.resizeButton = [[UIButton alloc] initWithFrame:CGRectMake(frame.size.width - self.buttonWidth,
+                                                                      frame.size.height - self.buttonWidth,
+                                                                       self.buttonWidth, self.buttonWidth)];
         [self.resizeButton setImage:[UIImage imageNamed:@"resize"] forState:UIControlStateNormal];
-        self.resizeButton.layer.cornerRadius = buttonWidth / 2;
-//        self.resizeButton.backgroundColor = [UIColor lightGrayColor];
+        self.resizeButton.layer.cornerRadius = self.buttonWidth / 2;
         self.resizeButton.layer.masksToBounds = YES;
         self.resizeButton.alpha = buttonAlpha;
-        [self.resizeButton addTarget:self action:@selector(resizeMosaic:) forControlEvents:UIControlEventTouchUpInside];
+        UIPanGestureRecognizer* gestureRecog = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                       action:@selector(resizeMosaicWithGesture:)];
+        [self.resizeButton addGestureRecognizer:gestureRecog];
 
         [self addSubview:self.imageView];
         [self addSubview:self.cancelButton];
         [self addSubview:self.resizeButton];
+
+        self.maximumMosaicImageWidth = 100;
+        self.minimumMosaicImageWidth = 30;
     }
     return self;
 }
@@ -64,10 +70,6 @@
 
 
 - (IBAction)cancelMosaic:(id)sender {
-
-}
-
-- (IBAction)resizeMosaic:(id)sender {
 
 }
 
@@ -121,5 +123,48 @@
     }
 
     return expectedFrameInSuperview.origin;
+}
+
+- (void)resizeMosaicWithGesture:(UIGestureRecognizer*)gesture {
+    static CGPoint firstLocation;
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        firstLocation = [gesture locationInView:self];
+    } else {
+        CGPoint location = [gesture locationInView:self];
+        CGFloat deltaX = location.x - firstLocation.x;
+        CGFloat deltaY = location.y - firstLocation.y;
+
+        CGFloat newWidth = MAX(deltaX, deltaY) + self.imageView.frame.size.width;
+        newWidth = MIN(newWidth, self.maximumMosaicImageWidth);
+        newWidth = MAX(newWidth, self.minimumMosaicImageWidth);
+
+        [self updateViewWithImageViewWidth:newWidth];
+    }
+}
+
+- (void)updateViewWithImageViewWidth:(CGFloat)imageViewWidth {
+    CGRect viewRect = CGRectZero;
+    viewRect.origin = self.frame.origin;
+    viewRect.size = CGSizeMake(imageViewWidth + self.buttonWidth, imageViewWidth + self.buttonWidth);
+    self.frame = viewRect;
+
+    CGRect imageViewRect = self.imageView.frame;
+    imageViewRect.size = CGSizeMake(imageViewWidth, imageViewWidth);
+    self.imageView.frame = imageViewRect;
+
+    CGRect resizeButtonRect = self.resizeButton.frame;
+    resizeButtonRect.origin.x = imageViewRect.origin.x + imageViewRect.size.width - self.buttonWidth / 2;
+    resizeButtonRect.origin.y = imageViewRect.origin.y + imageViewRect.size.height - self.buttonWidth / 2;
+    self.resizeButton.frame = resizeButtonRect;
+
+    [self setNeedsDisplay];
+}
+
+- (CGRect)mosaicRect {
+    CGRect rect = self.frame;
+    rect.origin.x += self.imageView.frame.origin.x;
+    rect.origin.y += self.imageView.frame.origin.y;
+    rect.size = self.imageView.frame.size;
+    return rect;
 }
 @end

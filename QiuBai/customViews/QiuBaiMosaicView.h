@@ -11,4 +11,5 @@
 @interface QiuBaiMosaicView : UIView
 @property (strong, nonatomic)   UIImage* mosaicImage;
 @property (assign, nonatomic)   CGSize   superViewSize;
+@property (assign, nonatomic, readonly)     CGRect imageRect;
 @end
