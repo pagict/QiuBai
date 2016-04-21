@@ -113,9 +113,13 @@
     // Do any additional setup after loading the view, typically from a nib.
     CGFloat naviHeight = self.navigationBar.frame.size.height;
     CGFloat tabHeight = self.tabBarController.tabBar.frame.size.height;
-    CGRect rect = CGRectMake(0, naviHeight,
+    CGFloat statusBarHeieght = [self prefersStatusBarHidden] ?
+                                0:
+                                [UIApplication sharedApplication].statusBarFrame.size.height;
+
+    CGRect rect = CGRectMake(0, naviHeight + statusBarHeieght,
                              [UIScreen mainScreen].bounds.size.width,
-                             [UIScreen mainScreen].bounds.size.height - naviHeight - tabHeight);
+                             [UIScreen mainScreen].bounds.size.height - naviHeight - tabHeight - statusBarHeieght);
     SnappingTabViewController *snappingTabViewController = [[SnappingTabViewController alloc] initWithFrame:rect];
     self.viewControllers = @[snappingTabViewController];
     self.subViews = [[NSMutableArray alloc] init];

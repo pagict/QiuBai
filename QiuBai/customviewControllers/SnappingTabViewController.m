@@ -21,8 +21,10 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super init];
     if (self) {
-        self.view.backgroundColor = [UIColor redColor];
-//        self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        CGRect rect = frame;
+        rect.origin = CGPointZero;
+        self.view = [[UIView alloc] initWithFrame:rect];
+        self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
         self.titleViewHeight = 20;
         self.indicatorHeight = 0;
         self.titleFont = [UIFont systemFontOfSize:self.titleViewHeight];
@@ -128,7 +130,7 @@
 }
 
 - (CGRect)subViewRect {
-    return self.scrollView.frame;
+    return self.scrollView.bounds;
 }
 
 /*
