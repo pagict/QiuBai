@@ -21,52 +21,16 @@
 @property (strong, nonatomic)   NSArray*    displayComments;
 @property (nonatomic)           CGFloat     editCommentViewHeight;
 @property (strong, nonatomic)   IBOutlet    EditCommentView*    editCommentView;
+@property (strong, nonatomic)   IBOutlet    UIScrollView*       backgroundScrollView;
 @property (strong, nonatomic)   IBOutlet    UITableView*    tableView;
 @end
 
 @implementation QiuBaiPostDetailViewController
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.editCommentViewHeight = 44.0;
-        self.view = [[UIScrollView alloc] initWithFrame:frame];
-        ((UIScrollView*)self.view).contentSize = frame.size;
-
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(keyboardDidShown:)
-                                                     name:UIKeyboardDidShowNotification
-                                                   object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(keyboardDidHide:)
-                                                     name:UIKeyboardDidHideNotification
-                                                   object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(keyboardDidShown:)
-                                                     name:UIKeyboardDidChangeFrameNotification
-                                                    object:nil];
-
-        CGRect editViewFrame = CGRectMake(0,
-                                          frame.size.height - self.editCommentViewHeight,
-                                          frame.size.width,
-                                          self.editCommentViewHeight);
-        self.editCommentView = [[EditCommentView alloc] initWithFrame:editViewFrame];
-        self.editCommentView.backgroundColor = [UIColor whiteColor];
-        self.editCommentView.delegate = self;
-        [self.view addSubview:self.editCommentView];
-        frame.origin.x = frame.origin.y = 0;
-        frame.size.height = frame.size.height - self.editCommentViewHeight;
-        self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
-        self.tableView.tableHeaderView = nil;
-        self.automaticallyAdjustsScrollViewInsets = NO;
-        [self.tableView registerNib:[UINib nibWithNibName:@"QiuBaiPostTableViewCell" bundle:nil]
-             forCellReuseIdentifier:@"QiuBaiPostTableViewCell"];
-        [self.tableView registerNib:[UINib nibWithNibName:@"QiuBaiCommentTableViewCell" bundle:nil]
-             forCellReuseIdentifier:@"QiuBaiCommentTableViewCell"];
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
-
-        [self.view addSubview:self.tableView];
     }
     return self;
 }
@@ -74,6 +38,54 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    CGFloat originY = self.navigationController.navigationBar.frame.size.height;
+    if ( ! [self prefersStatusBarHidden]) {
+        originY += [UIApplication sharedApplication].statusBarFrame.size.height;
+    }
+
+    CGFloat height = [UIScreen mainScreen].bounds.size.height - originY;
+    self.tabBarController.tabBar.hidden = YES;
+
+     CGRect frame = CGRectMake(0, originY, [UIScreen mainScreen].bounds.size.width, height);
+
+    self.backgroundScrollView = [[UIScrollView alloc] initWithFrame:frame];
+    self.backgroundScrollView.contentSize = frame.size;
+    [self.view addSubview:self.backgroundScrollView];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShown:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShown:)
+                                                 name:UIKeyboardDidChangeFrameNotification
+                                               object:nil];
+
+    CGRect editViewFrame = CGRectMake(0,
+                                      frame.size.height - self.editCommentViewHeight,
+                                      frame.size.width,
+                                      self.editCommentViewHeight);
+    self.editCommentView = [[EditCommentView alloc] initWithFrame:editViewFrame];
+    self.editCommentView.backgroundColor = [UIColor whiteColor];
+    self.editCommentView.delegate = self;
+    [self.backgroundScrollView addSubview:self.editCommentView];
+    frame.origin.x = frame.origin.y = 0;
+    frame.size.height = frame.size.height - self.editCommentViewHeight;
+    self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
+    self.tableView.tableHeaderView = nil;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.tableView registerNib:[UINib nibWithNibName:@"QiuBaiPostTableViewCell" bundle:nil]
+         forCellReuseIdentifier:@"QiuBaiPostTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"QiuBaiCommentTableViewCell" bundle:nil]
+         forCellReuseIdentifier:@"QiuBaiCommentTableViewCell"];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+
+    [self.backgroundScrollView addSubview:self.tableView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -158,9 +170,8 @@
                          [self.tableView scrollToRowAtIndexPath:newIndexPath
                                                atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 
-                         UIScrollView* scrollView = (UIScrollView*)self.view;
-                         scrollView.contentInset = UIEdgeInsetsZero;
-                         scrollView.scrollIndicatorInsets = UIEdgeInsetsZero;
+                         self.backgroundScrollView.contentInset = UIEdgeInsetsZero;
+                         self.backgroundScrollView.scrollIndicatorInsets = UIEdgeInsetsZero;
                      }];
 }
 
@@ -189,23 +200,23 @@
     NSDictionary* info = [aNotification userInfo];
     CGRect kbRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
 
-    if (! CGRectContainsPoint(self.view.frame, kbRect.origin)) {
+    if (! CGRectContainsPoint(self.backgroundScrollView.frame, kbRect.origin)) {
         return;
     }
     CGSize kbSize = kbRect.size;
 
 
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-    ((UIScrollView*)self.view).contentInset = contentInsets;
-    ((UIScrollView*)self.view).scrollIndicatorInsets = contentInsets;
+    self.backgroundScrollView.contentInset = contentInsets;
+    self.backgroundScrollView.scrollIndicatorInsets = contentInsets;
 
     // If active text field is hidden by keyboard, scroll it so it's visible
     // Your app might not need or want this behavior.
-    CGRect aRect = self.view.frame;
+    CGRect aRect = self.backgroundScrollView.frame;
     aRect.size.height -= kbSize.height;
     UIView* activeField = self.editCommentView;
     if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
-        [(UIScrollView*)self.view scrollRectToVisible:activeField.frame animated:YES];
+        [self.backgroundScrollView scrollRectToVisible:activeField.frame animated:YES];
     }
 
     if (!self.editCommentView.observationInfo) {
@@ -231,7 +242,7 @@
     if ([keyPath isEqualToString:@"frame"]) {
         NSValue* frameObject = change[@"new"];
         NSValue* oldFrame = change[@"old"];
-        [(UIScrollView*)self.view scrollRectToVisible:frameObject.CGRectValue animated:YES];
+        [self.backgroundScrollView scrollRectToVisible:frameObject.CGRectValue animated:YES];
         CGRect newTableViewFrame = self.tableView.frame;
         newTableViewFrame.size.height = oldFrame.CGRectValue.size.height + self.tableView.frame.size.height - frameObject.CGRectValue.size.height;
 

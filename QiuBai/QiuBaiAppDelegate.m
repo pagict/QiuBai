@@ -10,7 +10,7 @@
 #import "QiuBaiAppDelegate.h"
 #import "ModelStore.h"
 #import "DataLoader.h"
-#import "QiuEventViewController.h"
+#import "QiuSnappingTabTableViewController.h"
 
 
 @interface QiuBaiAppDelegate ()
@@ -28,11 +28,12 @@
     [[ModelStore sharedStore] sync];
 
 
-    UIViewController* qiubaiEventsController = [[QiuEventViewController alloc] init];
-
+    QiuSnappingTabTableViewController* qiubaiEventsController = [[QiuSnappingTabTableViewController alloc] init];
+    UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:qiubaiEventsController];
+    navController.tabBarItem.title = @"糗事";
 
     UITabBarController* tabBarController = [[UITabBarController alloc] init];
-    tabBarController.viewControllers = @[qiubaiEventsController];
+    tabBarController.viewControllers = @[navController];
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor clearColor];
