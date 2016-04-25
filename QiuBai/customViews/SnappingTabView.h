@@ -18,7 +18,6 @@
 @protocol SnappingTabViewDelegate <NSObject>
 
 @required
-- (void)updateView:(UIView*)view;
 @optional
 - (void)snappingTabView:(SnappingTabView*)snappingTabView didScrollToViewAtIndex:(NSInteger)subPageIndex;
 @end
@@ -33,8 +32,12 @@
 @property (nonatomic)         CGFloat indicatorHeight;
 @property (strong, nonatomic) UIColor* indicatorColor;
 @property (strong, nonatomic) UIColor* titleButtonHightlightColor;
-
 @property (nonatomic)         CGFloat titleViewHeight;
 
-@property (nonatomic, readonly) CGRect  subViewRect;
+@property (assign, nonatomic) NSInteger currentPageIndex;
+@property (strong, nonatomic) UIView*   currentPageView;
+
+@property (nonatomic, readonly) CGRect  subPageRect;
+
+- (void)hightTitleAtIndex:(NSInteger)index;
 @end

@@ -42,7 +42,7 @@
     QiuBaiUser* author = comment.commentAuthor;
 
     [self.nickNameButton setTitle:author.nickName forState:UIControlStateNormal];
-    [self.floatMenuButton setTitle:[NSString stringWithFormat:@"%lu", comment.respondComments.count] forState:UIControlStateNormal];
+    [self.floatMenuButton setTitle:[NSString stringWithFormat:@"%lu", (unsigned long)comment.respondComments.count] forState:UIControlStateNormal];
     self.commentContentLabel.text = comment.commentContent;
     self.commentTimeLabel.text = @"TODO: comment Time";
     [self.likeButton setTitle:[NSString stringWithFormat:@"%llu", comment.likeCount] forState:UIControlStateNormal];
