@@ -166,14 +166,8 @@
 }
 
 #pragma mark - SnappingTabView Delegate
-- (void)snappingTabView:(SnappingTabView *)snappingTabView didScrollToViewAtIndex:(NSInteger)subPageIndex {
-    [self.subViews[subPageIndex] reloadData];
-
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.snappingTabView hightTitleAtIndex:0];
-}
-
+//- (void)snappingTabView:(SnappingTabView *)snappingTabView didScrollToViewAtIndex:(NSInteger)subPageIndex {
+//    [self.subViews[subPageIndex] reloadData];
+//
+//}
 @end

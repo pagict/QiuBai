@@ -28,16 +28,17 @@
 @property (weak, nonatomic) id<SnappingTabViewDataSource> datasource;
 @property (weak, nonatomic) id<SnappingTabViewDelegate> delegate;
 
-@property (strong, nonatomic) UIFont* titleFont;
 @property (nonatomic)         CGFloat indicatorHeight;
-@property (strong, nonatomic) UIColor* indicatorColor;
-@property (strong, nonatomic) UIColor* titleButtonHightlightColor;
 @property (nonatomic)         CGFloat titleViewHeight;
 
-@property (assign, nonatomic) NSInteger currentPageIndex;
-@property (strong, nonatomic) UIView*   currentPageView;
+@property (strong, nonatomic) UIColor* indicatorColor;
+@property (strong, nonatomic) UIFont* titleFont;
+@property (strong, nonatomic) UIColor* titleTintColor;
+
+@property (assign, nonatomic, readonly) NSInteger currentPageIndex;
+@property (strong, nonatomic, readonly) UIView*   currentPageView;
 
 @property (nonatomic, readonly) CGRect  subPageRect;
 
-- (void)hightTitleAtIndex:(NSInteger)index;
+- (void)scrollToPageAtIndex:(NSInteger)pageIndex animated:(BOOL)isAnimated;
 @end

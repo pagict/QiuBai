@@ -22,6 +22,8 @@ typedef enum {
 
 @property (assign, nonatomic) CGFloat beginDraggingOffsetX;
 
+//@property (assign, nonatomic)   NSInteger currentPageIndex;
+@property (strong, nonatomic) UIColor* inactiveTitleColor;
 @end
 
 @implementation SnappingTabView
@@ -32,7 +34,7 @@ typedef enum {
         self.backgroundColor = [UIColor groupTableViewBackgroundColor];
         self.titleViewHeight = 25;
         self.indicatorHeight = 3;
-        self.currentPageIndex = 0;
+        _currentPageIndex = 0;
         [self initViewsWithFrame:frame];
     }
 
@@ -60,7 +62,7 @@ typedef enum {
     self.indicatorView = [[UIView alloc] initWithFrame:indicatorsViewFrame];
     [self addSubview:self.indicatorView];
     self.indicatorBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
-                                                                 indicatorsViewFrame.size.width, indicatorsViewFrame.size.height)];
+                                                                 50, indicatorsViewFrame.size.height)];
     self.indicatorBar.backgroundColor = self.indicatorColor;
     self.indicatorBar.layer.cornerRadius = self.indicatorBar.frame.size.height / 2;
     [self.indicatorView addSubview:self.indicatorBar];
@@ -79,19 +81,9 @@ typedef enum {
     [self addSubview:self.scrollView];
 }
 
-- (void)hightTitleAtIndex:(NSInteger)index {
-    if (self.tabTitlesView.arrangedSubviews.count <= index) {
-        return;
-    }
-    CGRect titleButtonFrame = self.tabTitlesView.arrangedSubviews[index].frame;
-    CGRect indicatorFrame = self.indicatorBar.frame;
-    indicatorFrame.origin.x = titleButtonFrame.origin.x;
-    indicatorFrame.size.width = titleButtonFrame.size.width;
 
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         self.indicatorBar.frame = indicatorFrame;
-                     }];
+- (CGRect)subPageRect {
+    return self.scrollView.bounds;
 }
 
 - (UIColor*)indicatorColor {
@@ -108,31 +100,38 @@ typedef enum {
     return _titleFont;
 }
 
+- (UIColor*)titleTintColor {
+    if (!_titleTintColor) {
+        _titleTintColor = [UIColor orangeColor];
+    }
+    return _titleTintColor;
+}
+
+- (UIColor*)inactiveTitleColor {
+    if (!_inactiveTitleColor) {
+        _inactiveTitleColor = [UIColor lightGrayColor];
+    }
+    return _inactiveTitleColor;
+}
+
 - (void)setDatasource:(id<SnappingTabViewDataSource>)datasource {
     NSArray<NSString*>* titles = [datasource titlesInSnappingTabView:self];
-    [self setupTitleBar:titles];
+    [self setupTitlesBarIndicatorBar:titles];
 
     self.containedViews =  [NSArray arrayWithArray:[datasource viewsInSnappingTabView:self]];
     [self setupScrollViewPages:self.containedViews];
-    self.currentPageView = self.containedViews[self.currentPageIndex];
+
+    self.currentPageIndex = 0;
 }
 
-- (void)setupIndicatorView {
-    CGRect titlesViewRect = self.tabTitlesView.frame;
-    CGRect indicatorViewRect = CGRectMake(titlesViewRect.origin.x, titlesViewRect.origin.y + titlesViewRect.size.height,
-                                          titlesViewRect.size.width, self.indicatorHeight);
-    self.indicatorView.frame = indicatorViewRect;
-    [self hightTitleAtIndex:self.currentPageIndex];
-}
-
-
-- (void)setupTitleBar:(NSArray<NSString*>*)titles {
+- (void)setupTitlesBarIndicatorBar:(NSArray<NSString*>*)titles {
     CGFloat btnWidth = 50;
+
+    // Setup TitlesBar
     CGFloat width = btnWidth * titles.count + self.tabTitlesView.spacing * (titles.count - 1);
     CGFloat originX = self.frame.size.width / 2 - width / 2;
     CGRect  newFrame = CGRectMake(originX, 0, width, self.titleViewHeight);
     self.tabTitlesView.frame = newFrame;
-
 
     int i = 0;
     for (i = 0; i < titles.count; i++) {
@@ -145,14 +144,20 @@ typedef enum {
       forControlEvents:UIControlEventTouchUpInside];
 
         [btn setTitle:title forState:UIControlStateNormal];
-        btn.backgroundColor = [UIColor lightGrayColor];
+//        btn.backgroundColor = [UIColor lightGrayColor];
         btn.titleLabel.font = self.titleFont;
+        [btn setTitleColor:self.inactiveTitleColor forState:UIControlStateNormal];
+        btn.tintColor = self.titleTintColor;
         btn.showsTouchWhenHighlighted = YES;
 
         [self.tabTitlesView addArrangedSubview:btn];
     }
 
-    [self setupIndicatorView];
+    // Setup Indicator Bar
+    CGRect titlesViewRect = self.tabTitlesView.frame;
+    CGRect indicatorViewRect = CGRectMake(titlesViewRect.origin.x, titlesViewRect.origin.y + titlesViewRect.size.height,
+                                          titlesViewRect.size.width, self.indicatorHeight);
+    self.indicatorView.frame = indicatorViewRect;
 }
 
 - (void)setupScrollViewPages:(NSArray<UIView*>*)tabViews {
@@ -164,45 +169,38 @@ typedef enum {
     for( UIView* tabView in tabViews) {
         CGRect frame = tabView.frame;
         frame.origin.x = i++ * self.scrollView.frame.size.width;
+        frame.origin.y = 0;
         tabView.frame = frame;
         [self.scrollView addSubview:tabView];
     }
 }
 
-- (CGRect)subPageRect {
-    return self.scrollView.bounds;
+- (void)hightTitleAtIndex:(NSInteger)index {
+    if (self.tabTitlesView.arrangedSubviews.count <= index) {
+        return;
+    }
+    for (UIButton* titleBtn in self.tabTitlesView.arrangedSubviews) {
+        [titleBtn setTitleColor:self.inactiveTitleColor forState:UIControlStateNormal];
+    }
+    UIButton* titleButton = self.tabTitlesView.arrangedSubviews[index];
+    [titleButton setTitleColor:self.titleTintColor forState:UIControlStateNormal];
+    CGRect titleButtonFrame = titleButton.frame;
+    CGRect indicatorFrame = self.indicatorBar.frame;
+    indicatorFrame.origin.x = titleButtonFrame.origin.x;
+    indicatorFrame.size.width = titleButtonFrame.size.width;
+
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.indicatorBar.frame = indicatorFrame;
+                     }];
 }
+
+
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     NSLog(@"%s", __func__);
-//    self.beginDraggingOffsetX = scrollView.contentOffset.x;
-}
-
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
-                     withVelocity:(CGPoint)velocity
-              targetContentOffset:(inout CGPoint *)targetContentOffset {
-    NSLog(@"%s", __func__);
-    NSUInteger newIndex = self.currentPageIndex;
-
-    if (self.beginDraggingOffsetX > targetContentOffset->x) {
-        newIndex = MAX(self.currentPageIndex - 1, 0);
-    }
-    if (self.beginDraggingOffsetX < targetContentOffset->x) {
-        newIndex = MIN(self.currentPageIndex + 1, self.containedViews.count - 1);
-    }
-
-    self.currentPageIndex = newIndex;
-    self.currentPageView = self.containedViews[self.currentPageIndex];
-
-//    [self hightTitleAtIndex:self.currentPageIndex];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    NSLog(@"%s", __func__);
-
-    self.currentPageView = self.containedViews[self.currentPageIndex];
-    [self hightTitleAtIndex:self.currentPageIndex];
+    self.beginDraggingOffsetX = scrollView.contentOffset.x;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -225,7 +223,7 @@ typedef enum {
     if (nextView == self.currentPageView) {
         return;
     }
-       NSLog(@"%s", __func__);
+    NSLog(@"%s", __func__);
     CGFloat viewsGrap = nextView.frame.origin.x - self.currentPageView.frame.origin.x;
 
     CGFloat movingRatio = (scrollView.contentOffset.x - self.beginDraggingOffsetX) / viewsGrap * buttonsGrap;
@@ -236,20 +234,27 @@ typedef enum {
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    _currentPageIndex = scrollView.contentOffset.x / scrollView.frame.size.width;
+    _currentPageView = self.containedViews[self.currentPageIndex];
     if ([self.delegate respondsToSelector:@selector(snappingTabView:didScrollToViewAtIndex:)]) {
         [self.delegate snappingTabView:self didScrollToViewAtIndex:self.currentPageIndex];
     }
-    self.beginDraggingOffsetX = scrollView.contentOffset.x;
+//    self.beginDraggingOffsetX = scrollView.contentOffset.x;
+    [self hightTitleAtIndex:_currentPageIndex];
 }
 
-- (void)scrollToPageAtIndex:(NSInteger)pageIndex {
-    [self hightTitleAtIndex:pageIndex];
-    CGRect viewRect = CGRectZero;
-    viewRect.size = self.scrollView.frame.size;
-    viewRect.origin = CGPointZero;
-    viewRect.origin.x = pageIndex * viewRect.size.width;
-    [self.scrollView scrollRectToVisible:viewRect animated:YES];
+- (void)scrollToPageAtIndex:(NSInteger)pageIndex animated:(BOOL)isAnimated{
+    if (! isAnimated) {
+        self.currentPageIndex = pageIndex;
+    } else {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.currentPageIndex = pageIndex;
+                         }];
+    }
 }
+
+#pragma mark -
 
 - (IBAction)scrollToPageWithTitleButton:(id)sender {
     NSInteger index = 0;
@@ -260,7 +265,18 @@ typedef enum {
 
         index++;
     }
+    self.currentPageIndex = index;
+}
 
-    [self scrollToPageAtIndex:index];
+- (void)setCurrentPageIndex:(NSInteger)currentPageIndex {
+    _currentPageIndex = currentPageIndex;
+
+    [self hightTitleAtIndex:currentPageIndex];
+    CGRect visibleRect = CGRectZero;
+    visibleRect.size = self.scrollView.frame.size;
+    visibleRect.origin.x = _currentPageIndex * visibleRect.size.width;
+    [self.scrollView scrollRectToVisible:visibleRect animated:YES];
+
+    _currentPageView = self.containedViews[_currentPageIndex];
 }
 @end
