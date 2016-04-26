@@ -146,7 +146,7 @@
 
 #pragma mark - SnappingTabViewDataSource
 - (NSArray<UIView*> *)viewsInSnappingTabView:(SnappingTabView *)snappingTabView {
-    CGRect rect = [self.snappingTabView subViewRect];
+    CGRect rect = [self.snappingTabView subPageRect];
     QiuBaiPostTableView *t1 = [[QiuBaiPostTableView alloc] initWithFrame:rect];
     t1.dataSource = self;
     t1.delegate = self;
@@ -155,16 +155,19 @@
     t2.dataSource = self;
     t2.delegate = self;
     [self.subViews addObject:t2];
-    return @[t1, t2];
+
+    QiuBaiPostTableView *t3 = [[QiuBaiPostTableView alloc] initWithFrame:rect];
+    t3.backgroundColor = [UIColor orangeColor];
+    [self.subViews addObject:t3];
+    return @[t1, t2, t3];
 }
 - (NSArray<NSString*> *)titlesInSnappingTabView:(SnappingTabView *)snappingTabView {
-    return @[@"tab1", @"long--tab--name"];
+    return @[@"tab1", @"long--tab--name", @"aaa"];
 }
 
 #pragma mark - SnappingTabView Delegate
-- (void)updateView:(UIView *)view {
-    [(UITableView*)view reloadData];
-}
-
-
+//- (void)snappingTabView:(SnappingTabView *)snappingTabView didScrollToViewAtIndex:(NSInteger)subPageIndex {
+//    [self.subViews[subPageIndex] reloadData];
+//
+//}
 @end
